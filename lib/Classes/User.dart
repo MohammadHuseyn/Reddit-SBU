@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'Post.dart';
 class User {
-  final int id = DateTime.now().millisecondsSinceEpoch;
+  final int id = DateTime.now().millisecondsSinceEpoch; // unchangeable
   String username; // need to be unique
   String firstName;
   String lastName;
   String password; // need a double check
   List<User> following = []; // is empty at first
   List<User> followers = []; // is empty at first
-  List</*TODO: make post file*/> posts = []; // is empty at first
-  final DateTime dateJoined = DateTime.now(); // no one can change that
+  List<Post> posts = []; // is empty at first
+  final DateTime dateJoined = DateTime.now(); // unchangeable
 
   User({
     this.username,  //
