@@ -18,6 +18,27 @@ class User {
     this.lastName,  // can be
     this.password,  // empty
 });
+  // getters; can't get password
+  int get getId => id;
+  String get getFirstName => firstName;
+  String get getLastName => lastName;
+  String get getFullName => firstName + " " + lastName;
+  String get getUsername => username;
+  List<User> get getFollowing => following;
+  List<User> get getFollowers => followers;
+  List<Post> get getPosts => posts;
+  bool get isLogedIn => logedIn;
+  //setters; can't set id, followers, followings, posts, logedIn
+  set setFirstName (String value){
+    firstName = value;
+  }
+  set setLastName (String value){
+    lastName = value;
+  }
+  set setUserName (String value){
+    username = value;
+  }
+  //methods
   bool logIn (String password){
     if (this.password == password)
       this.logedIn = true;
