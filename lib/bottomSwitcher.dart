@@ -46,7 +46,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
             activeIcon: Icon(e.activeIcon),
             label: e.title,
           )
-        ),
+        ).toList(),
         ),
       );
   }
