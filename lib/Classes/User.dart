@@ -9,6 +9,7 @@ class User {
   List<User> following = []; // is empty at first
   List<User> followers = []; // is empty at first
   List<Post> posts = []; // is empty at first
+  bool logedIn = false;
   final DateTime dateJoined = DateTime.now(); // unchangeable
 
   User({
@@ -17,5 +18,18 @@ class User {
     this.lastName,  // can be
     this.password,  // empty
 });
+  bool logIn (String password){
+    if (this.password == password)
+      this.logedIn = true;
+    else this.logedIn = false;
+    return this.logedIn;
+  }
+  Post newPost ({String caption, String imageDirectory}){
+    return Post(
+      caption: caption,
+      imageDirectory: imageDirectory,
+      owner: this,
+    );
+  }
 
 }
