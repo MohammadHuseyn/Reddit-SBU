@@ -6,7 +6,37 @@ class Signuppage extends StatefulWidget {
   @override
   State<Signuppage> createState() => _SignuppageState();
 }
-
+Widget _Mailbox(){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Email',
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Container(
+        alignment: Alignment.centerLeft,
+        height: 60.0,
+        child: TextField(
+          keyboardType: TextInputType.emailAddress,
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.only(top: 14.0),
+            prefixIcon:
+            Icon(
+                Icons.email,
+                color: Colors.blue
+            ),
+            hintText: 'Enter your Email',
+          ),
+        ),
+      ),
+    ],
+  );
+}
 class _SignuppageState extends State<Signuppage> {
   @override
   Widget build(BuildContext context) {
@@ -44,7 +74,10 @@ class _SignuppageState extends State<Signuppage> {
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
+                  SizedBox(height: 30.0),
+                  _Mailbox(),
+
                 ],
               ),
             ),
