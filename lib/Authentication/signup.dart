@@ -9,76 +9,101 @@ class Signuppage extends StatefulWidget {
   State<Signuppage> createState() => _SignuppageState();
 }
 
-Widget _Passwordbox() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        'Password',
-      ),
-      SizedBox(
-        height: 20,
-      ),
-      Container(
-        alignment: Alignment.centerLeft,
-        height: 60.0,
-        child: TextField(
-          obscureText: true,
-          style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(top: 14.0),
-            prefixIcon: Icon(Icons.lock, color: Colors.blue),
-            hintText: 'Enter your Password',
-          ),
-        ),
-      ),
-    ],
-  );
-}
 
-Widget _Mailbox() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        'Email',
-      ),
-      SizedBox(
-        height: 20,
-      ),
-      Container(
-        alignment: Alignment.centerLeft,
-        height: 60.0,
-        child: TextField(
-          keyboardType: TextInputType.emailAddress,
-          style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(top: 14.0),
-            prefixIcon: Icon(Icons.email, color: Colors.blue),
-            hintText: 'Enter your Email',
-          ),
-        ),
-      ),
-      SizedBox(
-        height: 20,
-      ),
-    ],
-  );
-}
-Widget _ForgotPassword(){
-  return  Container(
-    alignment: Alignment.centerRight,
-    child: FlatButton(
-      onPressed: () => print('Forget Password Button Pressed'),
-      padding: EdgeInsets.only(right: 0.0),
-      child: Text('Forgot Password?'),
-    ),
-  );
-}
+
 
 class _SignuppageState extends State<Signuppage> {
+  bool rememberMe = false;
+  Widget _Passwordbox() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Password',
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          height: 60.0,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(Icons.lock, color: Colors.blue),
+              hintText: 'Enter your Password',
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _Mailbox() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Email',
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          height: 60.0,
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(Icons.email, color: Colors.blue),
+              hintText: 'Enter your Email',
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+      ],
+    );
+  }
+  Widget _ForgotPassword(){
+    return  Container(
+      alignment: Alignment.centerRight,
+      child: FlatButton(
+        onPressed: () => print('Forget Password Button Pressed'),
+        padding: EdgeInsets.only(right: 0.0),
+        child: Text('Forgot Password?'),
+      ),
+    );
+  }
+  Widget _rememberMeBox(){
+    return Container(
+      child: Row(
+        children: <Widget>[
+          Theme(
+            data: ThemeData(unselectedWidgetColor: Colors.white),
+            child: Checkbox(
+              value: rememberMe,
+              checkColor: Colors.indigo,
+              activeColor: Colors.white,
+              onChanged: (value){
+                setState(() {
+                  rememberMe = value;
+                });
+              },
+            ),
+          ),
+          Text('Remember me'),
+        ],
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,6 +145,7 @@ class _SignuppageState extends State<Signuppage> {
                   _Mailbox(),
                   _Passwordbox(),
                   _ForgotPassword(),
+                  _rememberMeBox(),
                 ],
               ),
             ),
