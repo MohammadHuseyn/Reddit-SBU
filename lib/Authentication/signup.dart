@@ -8,7 +8,8 @@ class Signuppage extends StatefulWidget {
   @override
   State<Signuppage> createState() => _SignuppageState();
 }
-Widget _Passwordbox(){
+
+Widget _Passwordbox() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -16,7 +17,7 @@ Widget _Passwordbox(){
         'Password',
       ),
       SizedBox(
-        height: 10,
+        height: 20,
       ),
       Container(
         alignment: Alignment.centerLeft,
@@ -27,11 +28,7 @@ Widget _Passwordbox(){
           decoration: InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(top: 14.0),
-            prefixIcon:
-            Icon(
-                Icons.lock,
-                color: Colors.blue
-            ),
+            prefixIcon: Icon(Icons.lock, color: Colors.blue),
             hintText: 'Enter your Password',
           ),
         ),
@@ -39,7 +36,8 @@ Widget _Passwordbox(){
     ],
   );
 }
-Widget _Mailbox(){
+
+Widget _Mailbox() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -47,7 +45,7 @@ Widget _Mailbox(){
         'Email',
       ),
       SizedBox(
-        height: 10,
+        height: 20,
       ),
       Container(
         alignment: Alignment.centerLeft,
@@ -58,18 +56,28 @@ Widget _Mailbox(){
           decoration: InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(top: 14.0),
-            prefixIcon:
-            Icon(
-                Icons.email,
-                color: Colors.blue
-            ),
+            prefixIcon: Icon(Icons.email, color: Colors.blue),
             hintText: 'Enter your Email',
           ),
         ),
       ),
+      SizedBox(
+        height: 20,
+      ),
     ],
   );
 }
+Widget _ForgotPassword(){
+  return  Container(
+    alignment: Alignment.centerRight,
+    child: FlatButton(
+      onPressed: () => print('Forget Password Button Pressed'),
+      padding: EdgeInsets.only(right: 0.0),
+      child: Text('Forgot Password?'),
+    ),
+  );
+}
+
 class _SignuppageState extends State<Signuppage> {
   @override
   Widget build(BuildContext context) {
@@ -111,7 +119,7 @@ class _SignuppageState extends State<Signuppage> {
                   SizedBox(height: 30.0),
                   _Mailbox(),
                   _Passwordbox(),
-
+                  _ForgotPassword(),
                 ],
               ),
             ),
