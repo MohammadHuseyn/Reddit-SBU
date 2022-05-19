@@ -129,6 +129,24 @@ class _SignuppageState extends State<Signuppage> {
       ),
     );
   }
+  Widget _Signinwith(){
+    return  Column(
+      children: <Widget>[
+        Text(
+          '--- Or ---',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(height: 20.0,),
+        Text(
+          'Sign in with',
+        ),
+
+      ],
+    );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,6 +190,7 @@ class _SignuppageState extends State<Signuppage> {
                   _ForgotPassword(),
                   _rememberMeBox(),
                   _LoginBox(),
+                  _Signinwith(),
                 ],
               ),
             ),
