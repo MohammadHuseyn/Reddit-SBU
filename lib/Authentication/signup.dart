@@ -21,6 +21,9 @@ class _SignuppageState extends State<Signuppage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
+                  Colors.black54,
+                  Colors.black38,
+                  Colors.black54,
                 ],
               ),
             ),
@@ -28,15 +31,19 @@ class _SignuppageState extends State<Signuppage> {
           Container(
             height: double.infinity,
             child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 120.0),
+              physics: AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 120.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'Sign in',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Ooohbaby",
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   )
                 ],
               ),
