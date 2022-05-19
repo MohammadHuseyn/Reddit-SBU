@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class Signuppage extends StatefulWidget {
@@ -5,6 +7,37 @@ class Signuppage extends StatefulWidget {
 
   @override
   State<Signuppage> createState() => _SignuppageState();
+}
+Widget _Passwordbox(){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Password',
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Container(
+        alignment: Alignment.centerLeft,
+        height: 60.0,
+        child: TextField(
+          obscureText: true,
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.only(top: 14.0),
+            prefixIcon:
+            Icon(
+                Icons.lock,
+                color: Colors.blue
+            ),
+            hintText: 'Enter your Password',
+          ),
+        ),
+      ),
+    ],
+  );
 }
 Widget _Mailbox(){
   return Column(
@@ -77,6 +110,7 @@ class _SignuppageState extends State<Signuppage> {
                   ),
                   SizedBox(height: 30.0),
                   _Mailbox(),
+                  _Passwordbox(),
 
                 ],
               ),
