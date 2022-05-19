@@ -6,7 +6,37 @@ class Signuppage extends StatefulWidget {
   @override
   State<Signuppage> createState() => _SignuppageState();
 }
-
+Widget _Mailbox(){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Email',
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Container(
+        alignment: Alignment.centerLeft,
+        height: 60.0,
+        child: TextField(
+          keyboardType: TextInputType.emailAddress,
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.only(top: 14.0),
+            prefixIcon:
+            Icon(
+                Icons.email,
+                color: Colors.blue
+            ),
+            hintText: 'Enter your Email',
+          ),
+        ),
+      ),
+    ],
+  );
+}
 class _SignuppageState extends State<Signuppage> {
   @override
   Widget build(BuildContext context) {
@@ -21,6 +51,9 @@ class _SignuppageState extends State<Signuppage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
+                  Colors.black54,
+                  Colors.black38,
+                  Colors.black54,
                 ],
               ),
             ),
@@ -28,16 +61,23 @@ class _SignuppageState extends State<Signuppage> {
           Container(
             height: double.infinity,
             child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 120.0),
+              physics: AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 120.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'Sign in',
-                  )
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Ooohbaby",
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 30.0),
+                  _Mailbox(),
+
                 ],
               ),
             ),
