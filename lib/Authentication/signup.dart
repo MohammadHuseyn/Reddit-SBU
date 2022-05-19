@@ -104,6 +104,31 @@ class _SignuppageState extends State<Signuppage> {
       ),
     );
   }
+  Widget _LoginBox(){
+    return  Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () => print('Login Button Pressed'),
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Colors.white,
+        child: Text(
+          'Login',
+          style: TextStyle(
+            color: Colors.blue,
+            letterSpacing: 1.5,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Ooohbaby',
+          ),
+        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,6 +171,7 @@ class _SignuppageState extends State<Signuppage> {
                   _Passwordbox(),
                   _ForgotPassword(),
                   _rememberMeBox(),
+                  _LoginBox(),
                 ],
               ),
             ),
