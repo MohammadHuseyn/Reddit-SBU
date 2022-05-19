@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_mu/Authentication/signup.dart';
 import 'bottomSwitcher.dart';
 void main() {
   runApp(MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BottomSwitcher(),
+      home: Signuppage(),
     );
   }
 }
