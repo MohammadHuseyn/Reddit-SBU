@@ -2,17 +2,17 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 
-class Signuppage extends StatefulWidget {
-  const Signuppage({Key key}) : super(key: key);
+class Loginpage extends StatefulWidget {
+  const Loginpage({Key key}) : super(key: key);
 
   @override
-  State<Signuppage> createState() => _SignuppageState();
+  State<Loginpage> createState() => _LoginpageState();
 }
 
 
 
 
-class _SignuppageState extends State<Signuppage> {
+class _LoginpageState extends State<Loginpage> {
   bool rememberMe = false;
   Widget _Passwordbox() {
     return Column(
@@ -33,7 +33,7 @@ class _SignuppageState extends State<Signuppage> {
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(Icons.lock, color: Colors.blue),
+              prefixIcon: Icon(Icons.lock, color: Colors.blueGrey),
               hintText: 'Enter your Password',
             ),
           ),
@@ -61,7 +61,7 @@ class _SignuppageState extends State<Signuppage> {
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(Icons.email, color: Colors.blue),
+              prefixIcon: Icon(Icons.email, color: Colors.blueGrey),
               hintText: 'Enter your Email',
             ),
           ),
@@ -75,10 +75,11 @@ class _SignuppageState extends State<Signuppage> {
   Widget _ForgotPassword(){
     return  Container(
       alignment: Alignment.centerRight,
-      child: FlatButton(
+      child: TextButton(
         onPressed: () => print('Forget Password Button Pressed'),
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text('Forgot Password?'),
+        child: Text('Forgot Password?',style: TextStyle(
+          color: Colors.blueGrey,
+        ),),
       ),
     );
   }
@@ -108,18 +109,19 @@ class _SignuppageState extends State<Signuppage> {
     return  Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.green,
+          padding: EdgeInsets.only(bottom: 20.0,top: 20.0,),
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(30.0),
+          ),
         ),
-        color: Colors.white,
+        onPressed: () => print('Login Button Pressed'),
         child: Text(
           'Login',
           style: TextStyle(
-            color: Colors.blue,
+            color: Colors.white,
             letterSpacing: 1.5,
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
@@ -160,9 +162,9 @@ class _SignuppageState extends State<Signuppage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Colors.black54,
-                  Colors.black38,
-                  Colors.black54,
+                  Colors.green,
+                  Colors.white,
+                  Colors.white,
                 ],
               ),
             ),
@@ -191,6 +193,27 @@ class _SignuppageState extends State<Signuppage> {
                   _rememberMeBox(),
                   _LoginBox(),
                   _Signinwith(),
+                  GestureDetector(
+                    onTap: () => print('Login with Google'),
+                    child: Container(
+                      height: 60.0,
+                      width: 60.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black,
+                            offset: Offset(0,2),
+                            blurRadius: 6.0,
+                          ),
+                        ],
+                      //  image: DecorationImage(
+                        //  image: ,
+                        //),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
