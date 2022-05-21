@@ -19,18 +19,12 @@ class _LoginpageState extends State<Loginpage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Password',
-        ),
-        SizedBox(
-          height: 20,
-        ),
         Container(
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
             obscureText: true,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -47,18 +41,12 @@ class _LoginpageState extends State<Loginpage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Email',
-        ),
-        SizedBox(
-          height: 20,
-        ),
         Container(
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
             keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -66,9 +54,6 @@ class _LoginpageState extends State<Loginpage> {
               hintText: 'Enter your Email',
             ),
           ),
-        ),
-        SizedBox(
-          height: 20,
         ),
       ],
     );
@@ -78,7 +63,9 @@ class _LoginpageState extends State<Loginpage> {
     return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
-        onPressed: () => print('Forget Password Button Pressed'),
+        onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Not available right now"),
+        )),
         child: Text(
           'Forgot Password?',
           style: TextStyle(
@@ -94,10 +81,11 @@ class _LoginpageState extends State<Loginpage> {
       child: Row(
         children: <Widget>[
           Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
+            data: ThemeData(unselectedWidgetColor: Colors.green),
             child: Checkbox(
               value: rememberMe,
-              checkColor: Colors.indigo,
+              shape: CircleBorder(),
+              checkColor: Colors.green,
               activeColor: Colors.white,
               onChanged: (value) {
                 setState(() {
@@ -146,43 +134,94 @@ class _LoginpageState extends State<Loginpage> {
     return Column(
       children: <Widget>[
         Text(
-          '--- Or ---',
+          'or try log in with',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.black38,
+            fontSize: 18,
             fontWeight: FontWeight.w400,
           ),
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-        Text(
-          'Sign in with',
         ),
       ],
     );
   }
 
-  Widget _google() {
-    return GestureDetector(
-      onTap: () => print('golabi'),
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
+  Widget _more() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Not available right now"),
+          )),
+          child: Container(
+            height: 60.0,
+            width: 60.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(0, 2),
+                  blurRadius: 6.0,
+                ),
+              ],
+              image: DecorationImage(
+                image: AssetImage('assets/google.png'),
+              ),
             ),
-          ],
-          image: DecorationImage(
-            image: AssetImage('assets/google.png'),
           ),
         ),
-      ),
+        SizedBox(width: 20,),
+        GestureDetector(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Not available right now"),
+          )),
+          child: Container(
+            height: 60.0,
+            width: 60.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(0, 2),
+                  blurRadius: 6.0,
+                ),
+              ],
+              image: DecorationImage(
+                image: AssetImage('assets/github.png'),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 20,),
+        GestureDetector(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Not available right now"),
+          )),
+          child: Container(
+            height: 60.0,
+            width: 60.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(0, 2),
+                  blurRadius: 6.0,
+                ),
+              ],
+              image: DecorationImage(
+                image: AssetImage('assets/facebook.png'),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -226,12 +265,19 @@ class _LoginpageState extends State<Loginpage> {
                   SizedBox(height: 30.0),
                   _Mailbox(),
                   _Passwordbox(),
-                  _ForgotPassword(),
-                  _rememberMeBox(),
+                  Container(
+                      child: Row(
+                    children: [
+                      _ForgotPassword(),
+                      _rememberMeBox(),
+                    ],
+                  )),
                   _LoginBox(),
                   _Signinwith(),
-                  SizedBox(height: 30.0,),
-                  _google(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _more(),
                 ],
               ),
             ),
