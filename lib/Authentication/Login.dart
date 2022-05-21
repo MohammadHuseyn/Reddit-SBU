@@ -193,27 +193,6 @@ class _LoginpageState extends State<Loginpage> {
                   _rememberMeBox(),
                   _LoginBox(),
                   _Signinwith(),
-                  GestureDetector(
-                    onTap: () => print('Login with Google'),
-                    child: Container(
-                      height: 60.0,
-                      width: 60.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black,
-                            offset: Offset(0,2),
-                            blurRadius: 6.0,
-                          ),
-                        ],
-                      //  image: DecorationImage(
-                        //  image: ,
-                        //),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
