@@ -1,5 +1,6 @@
 import 'dart:html';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatefulWidget {
@@ -9,27 +10,21 @@ class Loginpage extends StatefulWidget {
   State<Loginpage> createState() => _LoginpageState();
 }
 
-
-
-
 class _LoginpageState extends State<Loginpage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool rememberMe = false;
+
   Widget _Passwordbox() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Password',
-        ),
-        SizedBox(
-          height: 20,
-        ),
         Container(
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
             obscureText: true,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -46,18 +41,12 @@ class _LoginpageState extends State<Loginpage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Email',
-        ),
-        SizedBox(
-          height: 20,
-        ),
         Container(
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
             keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -66,34 +55,39 @@ class _LoginpageState extends State<Loginpage> {
             ),
           ),
         ),
-        SizedBox(
-          height: 20,
-        ),
       ],
     );
   }
-  Widget _ForgotPassword(){
-    return  Container(
+
+  Widget _ForgotPassword() {
+    return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
-        onPressed: () => print('Forget Password Button Pressed'),
-        child: Text('Forgot Password?',style: TextStyle(
-          color: Colors.blueGrey,
-        ),),
+        onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Not available right now"),
+        )),
+        child: Text(
+          'Forgot Password?',
+          style: TextStyle(
+            color: Colors.blueGrey,
+          ),
+        ),
       ),
     );
   }
-  Widget _rememberMeBox(){
+
+  Widget _rememberMeBox() {
     return Container(
       child: Row(
         children: <Widget>[
           Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
+            data: ThemeData(unselectedWidgetColor: Colors.green),
             child: Checkbox(
               value: rememberMe,
-              checkColor: Colors.indigo,
+              shape: CircleBorder(),
+              checkColor: Colors.green,
               activeColor: Colors.white,
-              onChanged: (value){
+              onChanged: (value) {
                 setState(() {
                   rememberMe = value;
                 });
@@ -105,14 +99,18 @@ class _LoginpageState extends State<Loginpage> {
       ),
     );
   }
-  Widget _LoginBox(){
-    return  Container(
+
+  Widget _LoginBox() {
+    return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: Colors.green,
-          padding: EdgeInsets.only(bottom: 20.0,top: 20.0,),
+          padding: EdgeInsets.only(
+            bottom: 20.0,
+            top: 20.0,
+          ),
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0),
           ),
@@ -131,24 +129,102 @@ class _LoginpageState extends State<Loginpage> {
       ),
     );
   }
-  Widget _Signinwith(){
-    return  Column(
+
+  Widget _Signinwith() {
+    return Column(
       children: <Widget>[
         Text(
-          '--- Or ---',
+          'or try log in with',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black38,
+            fontSize: 18,
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(height: 20.0,),
-        Text(
-          'Sign in with',
-        ),
-
       ],
     );
-}
+  }
+
+  Widget _more() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Not available right now"),
+          )),
+          child: Container(
+            height: 60.0,
+            width: 60.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(0, 2),
+                  blurRadius: 6.0,
+                ),
+              ],
+              image: DecorationImage(
+                image: AssetImage('assets/google.png'),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 20,),
+        GestureDetector(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Not available right now"),
+          )),
+          child: Container(
+            height: 60.0,
+            width: 60.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(0, 2),
+                  blurRadius: 6.0,
+                ),
+              ],
+              image: DecorationImage(
+                image: AssetImage('assets/github.png'),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 20,),
+        GestureDetector(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Not available right now"),
+          )),
+          child: Container(
+            height: 60.0,
+            width: 60.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(0, 2),
+                  blurRadius: 6.0,
+                ),
+              ],
+              image: DecorationImage(
+                image: AssetImage('assets/facebook.png'),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,14 +265,23 @@ class _LoginpageState extends State<Loginpage> {
                   SizedBox(height: 30.0),
                   _Mailbox(),
                   _Passwordbox(),
-                  _ForgotPassword(),
-                  _rememberMeBox(),
+                  Container(
+                      child: Row(
+                    children: [
+                      _ForgotPassword(),
+                      _rememberMeBox(),
+                    ],
+                  )),
                   _LoginBox(),
                   _Signinwith(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _more(),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
