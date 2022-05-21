@@ -1,5 +1,6 @@
 import 'dart:html';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatefulWidget {
@@ -9,11 +10,11 @@ class Loginpage extends StatefulWidget {
   State<Loginpage> createState() => _LoginpageState();
 }
 
-
-
-
 class _LoginpageState extends State<Loginpage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool rememberMe = false;
+
   Widget _Passwordbox() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,18 +73,23 @@ class _LoginpageState extends State<Loginpage> {
       ],
     );
   }
-  Widget _ForgotPassword(){
-    return  Container(
+
+  Widget _ForgotPassword() {
+    return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
         onPressed: () => print('Forget Password Button Pressed'),
-        child: Text('Forgot Password?',style: TextStyle(
-          color: Colors.blueGrey,
-        ),),
+        child: Text(
+          'Forgot Password?',
+          style: TextStyle(
+            color: Colors.blueGrey,
+          ),
+        ),
       ),
     );
   }
-  Widget _rememberMeBox(){
+
+  Widget _rememberMeBox() {
     return Container(
       child: Row(
         children: <Widget>[
@@ -93,7 +99,7 @@ class _LoginpageState extends State<Loginpage> {
               value: rememberMe,
               checkColor: Colors.indigo,
               activeColor: Colors.white,
-              onChanged: (value){
+              onChanged: (value) {
                 setState(() {
                   rememberMe = value;
                 });
@@ -105,14 +111,18 @@ class _LoginpageState extends State<Loginpage> {
       ),
     );
   }
-  Widget _LoginBox(){
-    return  Container(
+
+  Widget _LoginBox() {
+    return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: Colors.green,
-          padding: EdgeInsets.only(bottom: 20.0,top: 20.0,),
+          padding: EdgeInsets.only(
+            bottom: 20.0,
+            top: 20.0,
+          ),
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0),
           ),
@@ -131,24 +141,51 @@ class _LoginpageState extends State<Loginpage> {
       ),
     );
   }
-  Widget _Signinwith(){
-    return  Column(
+
+  Widget _Signinwith() {
+    return Column(
       children: <Widget>[
         Text(
           '--- Or ---',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(height: 20.0,),
+        SizedBox(
+          height: 20.0,
+        ),
         Text(
           'Sign in with',
         ),
-
       ],
     );
-}
+  }
+
+  Widget _google() {
+    return GestureDetector(
+      onTap: () => print('golabi'),
+      child: Container(
+        height: 60.0,
+        width: 60.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 2),
+              blurRadius: 6.0,
+            ),
+          ],
+          image: DecorationImage(
+            image: AssetImage('assets/google.png'),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -193,10 +230,12 @@ class _LoginpageState extends State<Loginpage> {
                   _rememberMeBox(),
                   _LoginBox(),
                   _Signinwith(),
+                  SizedBox(height: 30.0,),
+                  _google(),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
