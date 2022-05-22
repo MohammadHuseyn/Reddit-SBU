@@ -11,9 +11,14 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool rememberMe = false;
+  bool unvisibility = true;
+
+  void changestateunvisibility(){
+    setState(() {
+      unvisibility = !unvisibility;
+    });
+  }
 
   Widget _Passwordbox() {
     return Column(
@@ -23,12 +28,16 @@ class _LoginpageState extends State<Loginpage> {
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
-            obscureText: true,
+            obscureText: unvisibility,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(Icons.lock, color: Colors.blueGrey),
+              suffixIcon: TextButton(
+                child: Icon(Icons.visibility,color: Colors.blueGrey,),
+                onPressed: changestateunvisibility,
+              ),
               hintText: 'Enter your Password',
             ),
           ),
@@ -173,7 +182,9 @@ class _LoginpageState extends State<Loginpage> {
             ),
           ),
         ),
-        SizedBox(width: 20,),
+        SizedBox(
+          width: 20,
+        ),
         GestureDetector(
           onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text("Not available right now"),
@@ -197,7 +208,9 @@ class _LoginpageState extends State<Loginpage> {
             ),
           ),
         ),
-        SizedBox(width: 20,),
+        SizedBox(
+          width: 20,
+        ),
         GestureDetector(
           onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text("Not available right now"),
