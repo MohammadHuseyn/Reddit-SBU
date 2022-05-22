@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class _LoginpageState extends State<Loginpage> {
   bool rememberMe = false;
   bool unvisibility = true;
 
-  void changestateunvisibility(){
+  void changestateunvisibility() {
     setState(() {
       unvisibility = !unvisibility;
     });
@@ -35,7 +36,10 @@ class _LoginpageState extends State<Loginpage> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(Icons.lock, color: Colors.blueGrey),
               suffixIcon: TextButton(
-                child: Icon(Icons.visibility,color: Colors.blueGrey,),
+                child: Icon(
+                  Icons.visibility,
+                  color: Colors.blueGrey,
+                ),
                 onPressed: changestateunvisibility,
               ),
               hintText: 'Enter your Password',
@@ -238,6 +242,32 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 
+  Widget Donthaveaccount() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          'Don’t have an account?',
+          style: TextStyle(
+            color: Colors.black54,
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            print('or Sign Up pressed');
+          },
+          child: Text(
+            'Sign Up',
+            style: TextStyle(
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -286,6 +316,10 @@ class _LoginpageState extends State<Loginpage> {
                     ],
                   )),
                   _LoginBox(),
+                  Donthaveaccount(),
+                  SizedBox(
+                    height: 15.0,
+                  ),
                   _Signinwith(),
                   SizedBox(
                     height: 30.0,
