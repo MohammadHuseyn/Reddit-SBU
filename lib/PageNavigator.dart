@@ -32,7 +32,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/image.jpeg", caption: "caption1"));
+    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/image.png", caption: "caption1"));
     users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/image.jpeg", caption: "caption2"));
     return Scaffold(
       body: Center(

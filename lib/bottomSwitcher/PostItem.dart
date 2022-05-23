@@ -9,9 +9,14 @@ class PostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListTile(
-        title: Text(post.owner.username),
-      ),
+      child: Column(
+        children: [
+          ListTile(
+            title: Text(post.owner.username),
+          ),
+          Image.asset(post.imageDirectory),
+        ],
+      )
     );
   }
 }
