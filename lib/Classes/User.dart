@@ -9,6 +9,7 @@ class User {
   List<User> following = []; // is empty at first
   List<User> followers = []; // is empty at first
   List<Post> posts = []; // is empty at first
+  String avatarDirectory;
   final DateTime dateJoined = DateTime.now(); // unchangeable
 
   User({
@@ -16,17 +17,18 @@ class User {
     this.firstName, // nothing
     this.lastName,  // can be
     this.password,  // empty
-});
+    this.avatarDirectory,
+  });
   // getters; can't get password
   int get getId => id;
   String get getFirstName => firstName;
   String get getLastName => lastName;
   String get getFullName => firstName + " " + lastName;
   String get getUsername => username;
+  String get getAvatarDirectory => avatarDirectory;
   List<User> get getFollowing => following;
   List<User> get getFollowers => followers;
   List<Post> get getPosts => posts;
-
   //setters; can't set id, followers, followings, posts, logedIn
   set setFirstName (String value){
     firstName = value;
@@ -36,6 +38,9 @@ class User {
   }
   set setUserName (String value){
     username = value;
+  }
+  set setAvatarDirectory (String value){
+    avatarDirectory = value;
   }
   //methods
 

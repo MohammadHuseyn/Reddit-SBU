@@ -32,8 +32,8 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/image.png", caption: "caption1"));
-    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/image.jpeg", caption: "caption2"));
+    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/google.png", caption: "caption1"));
+    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/google.png", caption: "caption2"));
     return Scaffold(
       body: Center(
         child: _swithcerView.elementAt(index),
@@ -88,12 +88,14 @@ List<User> users = [
     firstName: "firstName1",
     lastName: "lastName1",
     password: "password",
-    username: "username1"
+    username: "username1",
+    avatarDirectory: "assets/avatars/avatar.jpg"
   ),
   new User(
       firstName: "firstName2",
       lastName: "lastName2",
       password: "password",
-      username: "username2"
+      username: "username2",
+      avatarDirectory: "assets/avatars/avatar.jpg",
   )
 ];
