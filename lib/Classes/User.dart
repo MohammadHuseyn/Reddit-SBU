@@ -9,7 +9,6 @@ class User {
   List<User> following = []; // is empty at first
   List<User> followers = []; // is empty at first
   List<Post> posts = []; // is empty at first
-  bool logedIn = false;
   final DateTime dateJoined = DateTime.now(); // unchangeable
 
   User({
@@ -27,7 +26,7 @@ class User {
   List<User> get getFollowing => following;
   List<User> get getFollowers => followers;
   List<Post> get getPosts => posts;
-  bool get isLogedIn => logedIn;
+
   //setters; can't set id, followers, followings, posts, logedIn
   set setFirstName (String value){
     firstName = value;
@@ -39,12 +38,7 @@ class User {
     username = value;
   }
   //methods
-  bool logIn (String password){
-    if (this.password == password)
-      this.logedIn = true;
-    else this.logedIn = false;
-    return this.logedIn;
-  }
+
   Post newPost ({String caption, String imageDirectory}){
     return Post(
       caption: caption,
