@@ -1,14 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class Loginpage extends StatefulWidget {
-  const Loginpage({Key key}) : super(key: key);
+class Signuppage extends StatefulWidget {
+  const Signuppage({Key key}) : super(key: key);
 
   @override
-  State<Loginpage> createState() => _LoginpageState();
+  State<Signuppage> createState() => _SignuppageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
+class _SignuppageState extends State<Signuppage> {
+  @override
   bool rememberMe = false;
   bool unvisibility = true;
 
@@ -47,7 +48,28 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 
-  Widget _Userbox() {
+  Widget _Mailbox() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          height: 60.0,
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(color: Colors.black),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(Icons.email, color: Colors.blueGrey),
+              hintText: 'Enter your Email',
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  Widget _UserBox() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -110,7 +132,7 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 
-  Widget _LoginBox() {
+  Widget _SignUpBox() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
@@ -125,9 +147,9 @@ class _LoginpageState extends State<Loginpage> {
             borderRadius: new BorderRadius.circular(30.0),
           ),
         ),
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () => print('Signup Button Pressed'),
         child: Text(
-          'Login',
+          'SignUp',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
@@ -144,7 +166,7 @@ class _LoginpageState extends State<Loginpage> {
     return Column(
       children: <Widget>[
         Text(
-          'or try log in with',
+          'or try with',
           style: TextStyle(
             color: Colors.black38,
             fontSize: 18,
@@ -239,22 +261,22 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 
-  Widget Donthaveaccount() {
+  Widget Haveaccount() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          'Don’t have an account?',
+          'Already created an account?',
           style: TextStyle(
             color: Colors.black54,
           ),
         ),
         GestureDetector(
           onTap: () {
-            print('or Sign Up pressed');
+            print('or Sign in pressed');
           },
           child: Text(
-            'Sign Up',
+            'Sign in',
             style: TextStyle(
               color: Colors.black54,
               fontWeight: FontWeight.bold,
@@ -294,7 +316,7 @@ class _LoginpageState extends State<Loginpage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Sign in',
+                    'Create an account',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: "Ooohbaby",
@@ -303,17 +325,17 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                   SizedBox(height: 30.0),
-                  _Userbox(),
+                  _Mailbox(),
+                  _UserBox(),
                   _Passwordbox(),
                   Container(
                       child: Row(
                     children: [
-                      _ForgotPassword(),
                       _rememberMeBox(),
                     ],
                   )),
-                  _LoginBox(),
-                  Donthaveaccount(),
+                  _SignUpBox(),
+                  Haveaccount(),
                   SizedBox(
                     height: 15.0,
                   ),
