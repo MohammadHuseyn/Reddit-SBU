@@ -5,6 +5,9 @@ import 'package:test_mu/bottomSwitcher/home.dart';
 import 'package:test_mu/bottomSwitcher/add.dart';
 import 'package:test_mu/bottomSwitcher/search.dart';
 import 'package:test_mu/bottomSwitcher/switcherModel.dart';
+
+import 'Classes/Post.dart';
+import 'Classes/User.dart';
 class BottomSwitcher extends StatefulWidget {
 
   @override
@@ -14,7 +17,7 @@ class BottomSwitcher extends StatefulWidget {
 class _BottomSwitcherState extends State<BottomSwitcher> {
   int index = 0;
   static List<Widget> _swithcerView = [
-    Home(),
+    Home(users: users),
     Search(),
     Add(),
     Comment(),
@@ -29,6 +32,8 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
 
   @override
   Widget build(BuildContext context) {
+    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/image.jpeg", caption: "caption1"));
+    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assest/image.jpeg", caption: "caption2"));
     return Scaffold(
       body: Center(
         child: _swithcerView.elementAt(index),
@@ -77,4 +82,18 @@ List<SwitcherModel> _SwitcherItems = [
     activeIcon: Icons.notifications,
     title: "Notification",
   ),
+];
+List<User> users = [
+  new User(
+    firstName: "firstName1",
+    lastName: "lastName1",
+    password: "password",
+    username: "username1"
+  ),
+  new User(
+      firstName: "firstName2",
+      lastName: "lastName2",
+      password: "password",
+      username: "username2"
+  )
 ];

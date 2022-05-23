@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_mu/Authentication/Login.dart';
 import 'package:test_mu/Authentication/Signup.dart';
-import 'bottomSwitcher.dart';
+import 'PageNavigator.dart';
 void main() {
   runApp(MyApp());
 }
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Signuppage(),
+      home: BottomSwitcher(),
     );
   }
 }
