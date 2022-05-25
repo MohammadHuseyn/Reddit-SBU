@@ -2,83 +2,116 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Post.dart';
+
 class PostItem extends StatelessWidget {
   PostItem({this.post});
+
   Post post;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Container(
-            child: ListTile(
-              title: Text(post.owner.username),
-              leading: CircleAvatar(
-                backgroundImage: AssetImage('assets/google.png'),
+      color: Colors.black87,
+        child: Column(
+          children: [
+            Container(
+              color: Colors.transparent,
+              child: ListTile(
+                title: Text(post.owner.username,style: TextStyle(color: Colors.white),),
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/google.png'),
+                ),
               ),
             ),
-            decoration: BoxDecoration(border: Border.all(color: Colors.black38, width: 2)),
-          ),
-          Row(
-            children: [
-              ElevatedButton(onPressed: () =>
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("Comment pressed"),
-              ))
-                , child: Icon(Icons.comment),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(50,562.5),
-                  primary: Colors.blueGrey
-                ),
-              ),
-              Container(
-                child: Image(image: AssetImage("assets/google.png"),fit: BoxFit.cover,width: 550,),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black38,width: 2)
-                ),
-              ),
-              Column(
+            Container(
+              child: Image(
+                image: AssetImage(post.imageDirectory), fit: BoxFit.cover,),
+            ),
+            SizedBox(height: 10,),
+            Container(
+              color: Colors.transparent,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ElevatedButton(onPressed: () =>
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Liked"),
-                      ))
-                    , child: Icon(Icons.thumb_up_alt_rounded),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(50,281.5),
-                      primary: Colors.green,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Liked"),
+                            ));
+                          },
+                          child: Icon(Icons.thumb_up_alt_rounded),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black54,
+                            padding: EdgeInsets.all(18)
+                        ),
+                      ),
+                      SizedBox(width: 25,),
+                      ElevatedButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Disliked"),
+                            ));
+                          },
+                          child: Icon(Icons.thumb_down),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black54,
+                            padding: EdgeInsets.all(18)
+                        ),
+                      ),SizedBox(width: 25,),
+                      ElevatedButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Comments"),
+                            ));
+                          },
+                          child: Icon(Icons.comment),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black54,
+                            padding: EdgeInsets.all(18)
+                        ),
+                      ),SizedBox(width: 25,),
+                      ElevatedButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("shared"),
+                            ));
+                          },
+                          child: Icon(Icons.send),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black54,
+                          padding: EdgeInsets.all(18)
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Container(
+                    padding: EdgeInsets.only(left: 20),
+                    child: RichText(
+                      text: TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(text: post.owner.firstName + ": ",
+                                style: TextStyle(
+                                    color: Colors.white70, fontSize: 15,
+                                )),
+                             TextSpan(text: post.caption,
+                                style: TextStyle(color: Colors.white, fontSize: 17)),
+                          ]
+                      ),
                     ),
                   ),
-                  ElevatedButton(onPressed: () =>
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Disliked"),
-                      ))
-                    , child: Icon(Icons.thumb_down),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(50,281.5),
-                      primary: Colors.brown,
-                    ),
-                  ),
+                  Container(
+                    child: Divider(color: Colors.white12,),
+                  )
                 ],
-              )
-            ],
-          ),
-          SizedBox(height: 10,),
-          Container(
-            child: RichText(
-              text: TextSpan(
-                children: <TextSpan>[
-                  TextSpan(text: post.owner.firstName, style: TextStyle(color: Colors.black54,fontSize: 15)),
-                  TextSpan(text: ": ",style: TextStyle(color: Colors.black87,fontSize: 15)),
-                  TextSpan(text: post.caption, style: TextStyle(color: Colors.black,fontSize: 17)),
-                ]
               ),
             ),
-          ),
-          SizedBox(height: 10,),
-        ],
-      )
+          ],
+        )
     );
   }
 }
