@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:test_mu/bottomSwitcher/comment.dart';
 import 'package:test_mu/bottomSwitcher/notifications.dart';
@@ -5,6 +7,7 @@ import 'package:test_mu/bottomSwitcher/home.dart';
 import 'package:test_mu/bottomSwitcher/add.dart';
 import 'package:test_mu/bottomSwitcher/search.dart';
 import 'package:test_mu/bottomSwitcher/switcherModel.dart';
+import 'package:test_mu/main.dart';
 
 import 'Classes/Post.dart';
 import 'Classes/User.dart';
@@ -17,7 +20,7 @@ class BottomSwitcher extends StatefulWidget {
 class _BottomSwitcherState extends State<BottomSwitcher> {
   int index = 0;
   static List<Widget> _swithcerView = [
-    Home(users: users),
+    Home(mainUser: mainUser,),
     Search(),
     Add(),
     Comment(),
@@ -32,8 +35,10 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    users[0].posts.add(new Post(owner: users[0], imageDirectory: 'assets/google.png', caption: "caption1"));
-    users[0].posts.add(new Post(owner: users[0], imageDirectory: "assets/github.png", caption: "caption2"));
+    users[1].posts.add(new Post(owner: users[1], imageDirectory: 'assets/google.png', caption: "caption1"));
+    users[1].posts.add(new Post(owner: users[1], imageDirectory: "assets/github.png", caption: "caption2"));
+    mainUser.following.add(users[1]);
+    users[1].followers.add(mainUser);
     return Scaffold(
       body: Center(
         child: _swithcerView.elementAt(index),
@@ -99,3 +104,4 @@ List<User> users = [
       avatarDirectory: "assets/avatars/avatar.jpg",
   )
 ];
+User mainUser = users[0];
