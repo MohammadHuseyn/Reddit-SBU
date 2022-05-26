@@ -22,7 +22,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
   static List<Widget> _swithcerView = [
     Home(mainUser: mainUser,),
     Search(),
-    Add(),
+    Add(mainUser: users[1],),
     Comment(),
     Notifications(),
   ];
