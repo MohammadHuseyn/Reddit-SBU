@@ -5,18 +5,12 @@ import 'package:test_mu/PageNavigator.dart';
 
 import '../Classes/User.dart';
 
-class Add extends StatefulWidget {
+class Add extends StatelessWidget {
   Add({this.mainUser});
 
   User mainUser;
-
-  @override
-  State<Add> createState() => _AddState();
-}
-
-class _AddState extends State<Add> {
-  TextEditingController captionC;
-  TextEditingController imageDirectoryC;
+  final captionC = TextEditingController();
+  final imageDirectoryC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +28,7 @@ class _AddState extends State<Add> {
               primaryColorDark: Colors.white,
             ),
             child: TextField(
+              controller: captionC,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -66,8 +61,9 @@ class _AddState extends State<Add> {
           SizedBox(height: 50,),
           ElevatedButton(
               onPressed: () {
-                mainUser.posts.add(new Post(caption: captionC.toString(),
-                  imageDirectory: imageDirectoryC.toString(),owner: mainUser));
+                mainUser.posts.add(new Post(caption: captionC.text,
+                    imageDirectory: "assets/google.png", owner: mainUser));
+                captionC.clear();
               },
               child: Text("Upload new post"))
         ],
@@ -75,3 +71,4 @@ class _AddState extends State<Add> {
     );
   }
 }
+
