@@ -35,9 +35,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    users[1].posts.add(new Post(owner: users[1], imageDirectory: 'assets/google.png', caption: "caption1"));
-    users[1].posts.add(new Post(owner: users[1], imageDirectory: "assets/github.png", caption: "caption2"));
-    mainUser.following.add(users[1]);
+       mainUser.following.add(users[1]);
     users[1].followers.add(mainUser);
     return Scaffold(
       body: Center(
