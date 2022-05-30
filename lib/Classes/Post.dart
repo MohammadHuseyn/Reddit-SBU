@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'User.dart';
+import 'Community.dart';
 class Post {
   final int id = DateTime.now().millisecondsSinceEpoch; // unchangeable
   String caption;
   String imageDirectory;
+  Community community;
   List<User> disliked = []; // is empty at first
   List<User> liked = []; // is empty at first
   List<User> commented = []; // is empty at first
@@ -15,6 +17,7 @@ class Post {
     this.caption,         // nothing
     this.imageDirectory,  // can be
     this.owner,           // empty
+    this.community,
 });
   String get getCaption => caption;
   String get getImageDirectory => imageDirectory;
