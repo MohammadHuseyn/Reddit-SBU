@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/bottomSwitcher/comment.dart';
 import 'package:test_mu/bottomSwitcher/notifications.dart';
 import 'package:test_mu/bottomSwitcher/home.dart';
@@ -35,11 +36,14 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-       mainUser.following.add(users[1]);
-       mainUser.following.add(users[2]);
-       users[1].posts.add(new Post(owner: users[1], imageDirectory: "assets/google.png", caption: "caption3"));
-       users[2].posts.add(new Post(owner: users[2], imageDirectory: "assets/google.png", caption: "caption3"));
-    users[1].followers.add(mainUser);
+    Community community = new Community(owner: mainUser, avatarDirectory: 'assets/google.png',descriptoin: "desc", name: "my Comminuty");
+    mainUser.communities.add(community);
+    users[1].communities.add(community);
+    users[2].communities.add(community);
+       mainUser.communities[0].following.add(users[1]);
+       mainUser.communities[0].following.add(users[2]);
+       users[1].communities[0].posts.add(new Post(owner: users[1], imageDirectory: "assets/google.png", caption: "caption3"));
+       users[2].communities[0].posts.add(new Post(owner: users[2], imageDirectory: "assets/google.png", caption: "caption3"));
     return Scaffold(
       body: Center(
         child: _swithcerView.elementAt(index),

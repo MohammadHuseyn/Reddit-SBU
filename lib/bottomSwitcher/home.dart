@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/bottomSwitcher/PostItem.dart';
 
 import '../Classes/User.dart';
 
-Container loop(User user) {
+Container loop(Community community) {
   return Container(
     child: ListView.builder(
-        itemCount: user.posts.length,
+        itemCount: community.posts.length,
         itemBuilder: (context, index) {
-          return PostItem(post: user.posts.elementAt(index));
+          return PostItem(post: community.posts.elementAt(index));
         }),
     height: 400,
   );
@@ -25,9 +26,9 @@ class Home extends StatelessWidget {
     return Container(
       height: 400,
       child: ListView.builder(
-          itemCount: mainUser.following.length,
+          itemCount: mainUser.communities.length,
           itemBuilder: (context, i)  {
-            return loop(mainUser.following.elementAt(i));
+            return loop(mainUser.communities.elementAt(i));
           }),
     );
   }

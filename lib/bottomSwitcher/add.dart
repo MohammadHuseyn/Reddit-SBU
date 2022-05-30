@@ -61,7 +61,7 @@ class Add extends StatelessWidget {
           SizedBox(height: 50,),
           ElevatedButton(
               onPressed: () {
-                mainUser.posts.add(new Post(caption: captionC.text,
+                mainUser.communities.elementAt(0).posts.add(new Post(caption: captionC.text,
                     imageDirectory: "assets/google.png", owner: mainUser));
                 captionC.clear();
               },

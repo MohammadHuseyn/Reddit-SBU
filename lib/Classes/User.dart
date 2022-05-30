@@ -26,9 +26,6 @@ class User {
   String get getFullName => firstName + " " + lastName;
   String get getUsername => username;
   String get getAvatarDirectory => avatarDirectory;
-  List<User> get getFollowing => following;
-  List<User> get getFollowers => followers;
-  List<Post> get getPosts => posts;
   //setters; can't set id, followers, followings, posts, logedIn
   set setFirstName (String value){
     firstName = value;
