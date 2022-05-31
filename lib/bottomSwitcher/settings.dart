@@ -25,6 +25,28 @@ class _SettingsState extends State<Settings> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Card(
+              elevation: 8.0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              margin: const EdgeInsets.all(8.0),
+              color: Colors.red,
+              child: ListTile(
+                onTap: () {},
+                title: Text(
+                  "username",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.w400),
+                ),
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/google.png'),
+                ),
+                trailing: Icon(Icons.edit,color: Colors.white,),
+              ),
+            ),
+            const SizedBox(height: 10.0,),
+            Card(
+              elevation: 4.0,
+              margin: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 16.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0)),
               child: Column(
