@@ -3,7 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/bottomSwitcher/comment.dart';
-import 'package:test_mu/bottomSwitcher/notifications.dart';
+import 'package:test_mu/bottomSwitcher/settings.dart';
 import 'package:test_mu/bottomSwitcher/home.dart';
 import 'package:test_mu/bottomSwitcher/add.dart';
 import 'package:test_mu/bottomSwitcher/search.dart';
@@ -25,7 +25,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
     Search(),
     Add(mainUser: users[1],),
     Comment(),
-    Notifications(),
+    Settings(),
   ];
 
   void _onTapNavigationItemBar(int i){
@@ -88,9 +88,9 @@ List<SwitcherModel> _SwitcherItems = [
     title: "Comments",
   ),
   SwitcherModel(
-    icon: Icons.notifications_none_outlined,
-    activeIcon: Icons.notifications,
-    title: "Notification",
+    icon: Icons.settings,
+    activeIcon: Icons.settings,
+    title: "Settings",
   ),
 ];
 List<User> users = [
