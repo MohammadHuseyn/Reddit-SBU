@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Settings extends StatefulWidget {
   const Settings({Key key}) : super(key: key);
 
@@ -14,23 +15,37 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Text('Settings',style: TextStyle(color: Colors.black),),
+        title: Text(
+          'Settings',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
               child: Column(
                 children: <Widget>[
                   ListTile(
-                    leading: Icon(Icons.lock_outline,color: Colors.red,),
+                    leading: Icon(
+                      Icons.lock_outline,
+                      color: Colors.red,
+                    ),
                     title: Text("Change Password"),
                     trailing: Icon(Icons.keyboard_arrow_right),
-                    onTap: (){
-
-                    },
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.language,
+                      color: Colors.red,
+                    ),
+                    title: Text("Change Language"),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {},
                   ),
                 ],
               ),
