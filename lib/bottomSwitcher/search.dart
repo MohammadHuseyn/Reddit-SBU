@@ -155,13 +155,18 @@ class MySearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
+    List<Community> searchResults = communities.where((e) {
+      final result = e.name.toLowerCase();
+      final input = query.toLowerCase();
+      return result.contains(input);
+    }).toList();
     return ListView.builder(
-      itemCount: communities.length,
+      itemCount: searchResults.length,
       itemBuilder: (context, i) {
         return ListTile(
-          title: Text(communities.elementAt(i).name),
+          title: Text(searchResults.elementAt(i).name),
           onTap: () {
-            query = communities.elementAt(i).name;
+            query = searchResults.elementAt(i).name;
             showResults(context);
           },
         );
