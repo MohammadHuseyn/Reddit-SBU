@@ -37,6 +37,9 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
   @override
   Widget build(BuildContext context) {
     Community community = new Community(owner: mainUser, avatarDirectory: 'assets/google.png',descriptoin: "desc", name: "my Comminuty");
+    Community community2 = new Community(owner: mainUser, avatarDirectory: 'assets/google.png',descriptoin: "desc", name: "golabi");
+    communities.add(community);
+    communities.add(community2);
     mainUser.communities.add(community);
     users[1].communities.add(community);
     users[2].communities.add(community);
@@ -93,6 +96,9 @@ List<SwitcherModel> _SwitcherItems = [
     activeIcon: Icons.settings,
     title: "Settings",
   ),
+];
+List<Community> communities = [
+
 ];
 List<User> users = [
   new User(
