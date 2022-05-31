@@ -24,7 +24,14 @@ class _SettingsState extends State<Settings> {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
               child: Column(
                 children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.lock_outline,color: Colors.red,),
+                    title: Text("Change Password"),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: (){
 
+                    },
+                  ),
                 ],
               ),
             ),
