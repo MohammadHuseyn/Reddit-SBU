@@ -11,10 +11,10 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade200,
         title: Text(
           'Settings',
           style: TextStyle(color: Colors.black),
@@ -60,6 +60,11 @@ class _SettingsState extends State<Settings> {
                     trailing: Icon(Icons.keyboard_arrow_right),
                     onTap: () {},
                   ),
+                  Container(
+                    width: double.infinity,
+                    height: 2.0,
+                    color: Colors.grey.shade300,
+                  ),
                   ListTile(
                     leading: Icon(
                       Icons.language,
@@ -69,12 +74,45 @@ class _SettingsState extends State<Settings> {
                     trailing: Icon(Icons.keyboard_arrow_right),
                     onTap: () {},
                   ),
+                  Container(
+                    width: double.infinity,
+                    height: 2.0,
+                    color: Colors.grey.shade300,
+                  ),
                   ListTile(
                     leading: Icon(
                       Icons.location_on_rounded,
                       color: Colors.red,
                     ),
                     title: Text("Change Location"),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {},
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 2.0,
+                    color: Colors.grey.shade300,
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.build,
+                      color: Colors.red,
+                    ),
+                    title: Text("Build Cmmunity"),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {},
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 2.0,
+                    color: Colors.grey.shade300,
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.save_alt,
+                      color: Colors.red,
+                    ),
+                    title: Text("Saved Posts"),
                     trailing: Icon(Icons.keyboard_arrow_right),
                     onTap: () {},
                   ),
