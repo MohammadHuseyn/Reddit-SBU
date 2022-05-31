@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/bottomSwitcher/comment.dart';
@@ -8,8 +6,6 @@ import 'package:test_mu/bottomSwitcher/home.dart';
 import 'package:test_mu/bottomSwitcher/add.dart';
 import 'package:test_mu/bottomSwitcher/search.dart';
 import 'package:test_mu/bottomSwitcher/switcherModel.dart';
-import 'package:test_mu/main.dart';
-
 import 'Classes/Post.dart';
 import 'Classes/User.dart';
 class BottomSwitcher extends StatefulWidget {
@@ -22,7 +18,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
   int index = 0;
   static List<Widget> _swithcerView = [
     Home(mainUser: mainUser,),
-    Search(),
+    Search(communities: communities),
     Add(mainUser: users[1],),
     Comment(),
     Settings(),
