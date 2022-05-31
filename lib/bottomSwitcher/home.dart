@@ -5,14 +5,14 @@ import 'package:test_mu/bottomSwitcher/PostItem.dart';
 
 import '../Classes/User.dart';
 
-Container loop(Community community) {
+Container loop(Community community,BuildContext context) {
   return Container(
+    height: MediaQuery.of(context).size.height,
     child: ListView.builder(
         itemCount: community.posts.length,
         itemBuilder: (context, index) {
           return PostItem(post: community.posts.elementAt(index));
         }),
-    height: 400,
   );
 }
 
@@ -24,11 +24,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: MediaQuery.of(context).size.height,
       child: ListView.builder(
           itemCount: mainUser.communities.length,
           itemBuilder: (context, i)  {
-            return loop(mainUser.communities.elementAt(i));
+            return loop(mainUser.communities.elementAt(i),context);
           }),
     );
   }
