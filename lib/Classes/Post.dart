@@ -11,7 +11,7 @@ class Post {
   List<User> commented = []; // is empty at first
   List<String> comments = []; // is empty at first
   User owner;
-  final DateTime date = DateTime.now(); // unchangeable
+  DateTime date = DateTime.now(); // unchangeable
 
   Post({
     this.caption,         // nothing

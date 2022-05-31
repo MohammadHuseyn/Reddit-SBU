@@ -10,6 +10,19 @@ class PostItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String ago;
+    if(post.date.difference(DateTime.now()).inDays.abs() >= 30)
+      ago = (post.date.difference(DateTime.now()).inDays.abs().toInt()%30 + 1).toString() + " month(s)";
+    else if (post.date.difference(DateTime.now()).inDays.abs() >= 7)
+      ago = (post.date.difference(DateTime.now()).inDays.abs().toInt()%7 + 1).toString() + " week(s)";
+    else if(post.date.difference(DateTime.now()).inDays.abs() > 0)
+      ago = (post.date.difference(DateTime.now()).inDays.abs()).toString() + " day(s)";
+    else if(post.date.difference(DateTime.now()).inHours.abs() > 0)
+      ago = (post.date.difference(DateTime.now()).inHours.abs()).toString() + " hour(s)";
+    else if(post.date.difference(DateTime.now()).inMinutes.abs() > 0)
+      ago = (post.date.difference(DateTime.now()).inMinutes.abs()).toString() + " minute(s)";
+    else ago = (post.date.difference(DateTime.now()).inSeconds.abs()).toString() + " second(s)";
+    ago += " ago, ";
     return Container(
       color: Colors.black87,
         child: Column(
@@ -94,7 +107,9 @@ class PostItem extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                           children: <TextSpan>[
-                            TextSpan(text: post.owner.firstName + ": ",
+                            TextSpan(text:
+                                ago +
+                            post.owner.firstName + ": ",
                                 style: TextStyle(
                                     color: Colors.white70, fontSize: 15,
                                 )),

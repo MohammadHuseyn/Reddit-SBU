@@ -44,6 +44,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
        mainUser.communities[0].following.add(users[2]);
        users[1].communities[0].posts.add(new Post(owner: users[1], imageDirectory: "assets/google.png", caption: "caption3"));
        users[2].communities[0].posts.add(new Post(owner: users[2], imageDirectory: "assets/google.png", caption: "caption3"));
+       users[1].communities[0].posts[0].date = DateTime(2022,3,1);
     return Scaffold(
       body: Center(
         child: _swithcerView.elementAt(index),
