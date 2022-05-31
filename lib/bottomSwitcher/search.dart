@@ -21,7 +21,7 @@ class _SearchState extends State<Search> {
       data: ThemeData(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Search"),
+          title: Text("Explore in communities"),
           actions: [
             IconButton(
                 onPressed: () {
@@ -29,6 +29,20 @@ class _SearchState extends State<Search> {
                 },
                 icon: Icon(Icons.search))
           ],
+        ),
+        body: Container(
+          child: ListView.builder(
+            itemCount: communities.length,
+            itemBuilder: (context,i){
+              return ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(communities.elementAt(i).avatarDirectory),
+                ),
+                title: Text(communities.elementAt(i).name),
+                subtitle: Text(communities.elementAt(i).descriptoin),
+              );
+            },
+          ),
         ),
       ),
     );
