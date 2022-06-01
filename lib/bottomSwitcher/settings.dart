@@ -116,6 +116,20 @@ class _SettingsState extends State<Settings> {
                     trailing: Icon(Icons.keyboard_arrow_right),
                     onTap: () {},
                   ),
+                  Container(
+                    width: double.infinity,
+                    height: 2.0,
+                    color: Colors.grey.shade300,
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.account_box,
+                      color: Colors.red,
+                    ),
+                    title: Text("About Us"),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {},
+                  ),
                 ],
               ),
             ),
