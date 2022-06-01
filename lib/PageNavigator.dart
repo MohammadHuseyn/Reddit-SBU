@@ -34,9 +34,11 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
   Widget build(BuildContext context) {
     Community community = new Community(owner: mainUser, avatarDirectory: 'assets/google.png',descriptoin: "desc", name: "my Comminuty");
     Community community2 = new Community(owner: mainUser, avatarDirectory: 'assets/google.png',descriptoin: "desc", name: "golabi");
+    Community newC = new Community(name: "name", owner: mainUser, avatarDirectory: "assets/google.png", descriptoin: "desc");
     communities.add(community);
     communities.add(community2);
     mainUser.communities.add(community);
+    mainUser.communities.add(community2);
     users[1].communities.add(community);
     users[2].communities.add(community);
        mainUser.communities[0].following.add(users[1]);
