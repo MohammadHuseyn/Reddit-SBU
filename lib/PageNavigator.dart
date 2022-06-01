@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_mu/Classes/CommentClass.dart';
 import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/bottomSwitcher/comment.dart';
 import 'package:test_mu/bottomSwitcher/settings.dart';
@@ -43,7 +44,11 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
     users[2].communities.add(community);
        mainUser.communities[0].following.add(users[1]);
        mainUser.communities[0].following.add(users[2]);
-       users[1].communities[0].posts.add(new Post(owner: users[1], imageDirectory: "assets/google.png", caption: "caption3"));
+       Post post1 = new Post(owner: users[1], imageDirectory: "assets/google.png", caption: "caption3");
+       users[1].communities[0].posts.add(post1);
+    post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
+    post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
+    post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
        users[2].communities[0].posts.add(new Post(owner: users[2], imageDirectory: "assets/google.png", caption: "caption3"));
        users[1].communities[0].posts[0].date = DateTime(2022,3,1);
     return Scaffold(

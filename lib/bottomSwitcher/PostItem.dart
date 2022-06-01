@@ -1,8 +1,12 @@
 import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:test_mu/Classes/CommentClass.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/PageNavigator.dart';
+import 'CommentItem.dart';
+import 'comment.dart';
 
 class PostItem extends StatefulWidget {
   PostItem({this.post});
@@ -14,6 +18,8 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
+  var controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String ago;
@@ -143,11 +149,10 @@ class _PostItemState extends State<PostItem> {
                                   break;
                                 }
                               }
-                            } else if (widget.post.liked
-                                .contains(mainUser)) {
+                            } else if (widget.post.liked.contains(mainUser)) {
                               for (int i = 0;
-                              i < widget.post.liked.length;
-                              i++) {
+                                  i < widget.post.liked.length;
+                                  i++) {
                                 if (widget.post.liked.elementAt(i) ==
                                     mainUser) {
                                   widget.post.liked.removeAt(i);
@@ -182,11 +187,61 @@ class _PostItemState extends State<PostItem> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          setState(() {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Comments"),
-                            ));
-                          });
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(builder: (context) => Comment(post: widget.post,)),
+                          // );
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  scrollable: true,
+                                  content: Container(
+                                    width: 500,
+                                    height: 500,
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: TextField(
+                                            controller: controller,
+                                            decoration: InputDecoration(
+                                                hintText: "Type a comment",
+                                                suffixIcon: IconButton(
+                                                  icon: Icon(Icons.send),
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      widget.post.comments.add(
+                                                          new CommentClass(
+                                                              owner: mainUser,
+                                                              onPost:
+                                                                  widget.post,
+                                                              comment:
+                                                                  controller
+                                                                      .text));
+                                                      controller.text = "";
+                                                    });
+                                                  },
+                                                )),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 70),
+                                          child: ListView.builder(
+                                              itemCount:
+                                                  widget.post.comments.length,
+                                              itemBuilder: (context, i) {
+                                                return CommentItem(
+                                                  comment: widget.post.comments
+                                                      .elementAt(i),
+                                                );
+                                              }),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
                         },
                         child: Row(
                           children: [

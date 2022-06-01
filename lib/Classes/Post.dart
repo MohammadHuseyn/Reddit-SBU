@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'User.dart';
 import 'Community.dart';
+import 'CommentClass.dart';
 class Post {
   final int id = DateTime.now().millisecondsSinceEpoch; // unchangeable
   String caption;
@@ -9,7 +10,7 @@ class Post {
   List<User> disliked = []; // is empty at first
   List<User> liked = []; // is empty at first
   List<User> commented = []; // is empty at first
-  List<String> comments = []; // is empty at first
+  List<CommentClass> comments = []; // is empty at first
   User owner;
   DateTime date = DateTime.now(); // unchangeable
 
@@ -24,7 +25,7 @@ class Post {
   List<User> get getDisliked => disliked;
   List<User> get getLiked => disliked;
   List<User> get getCommented => commented;
-  List<String> get getComments => comments;
+  List<CommentClass> get getComments => comments;
   set setCaption (String value){
     caption = value;
   }
