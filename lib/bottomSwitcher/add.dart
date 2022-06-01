@@ -1,17 +1,23 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/PageNavigator.dart';
 
 import '../Classes/User.dart';
 
-class Add extends StatelessWidget {
+class Add extends StatefulWidget {
   Add({this.mainUser});
 
   User mainUser;
+
+  @override
+  State<Add> createState() => _AddState();
+}
+
+class _AddState extends State<Add> {
   final captionC = TextEditingController();
   final imageDirectoryC = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,6 +28,19 @@ class Add extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         // mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Container(
+            width: 400,
+            child: DropdownButton<Community>(
+              hint: Text("  Select a community to publish post  ",style: TextStyle(color: Colors.white),),
+              items: widget.mainUser.communities.map((Community value) {
+                return DropdownMenuItem<Community>(
+                  value: value,
+                  child: Text(value.name),
+                );
+              }).toList(),
+              onChanged: (_) {},
+            ),
+          ),
           Theme(
             data: new ThemeData(
               primaryColor: Colors.white,
@@ -46,7 +65,9 @@ class Add extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 50,),
+          SizedBox(
+            height: 50,
+          ),
           ElevatedButton(
               onPressed: () async {
                 FilePickerResult result = await FilePicker.platform.pickFiles();
@@ -55,14 +76,19 @@ class Add extends StatelessWidget {
                 }
                 imageDirectoryC.text = "assets/google.png";
               },
-              child: Text("choose image for new post",
-                style: TextStyle(color: Colors.white),)
+              child: Text(
+                "choose image for new post",
+                style: TextStyle(color: Colors.white),
+              )),
+          SizedBox(
+            height: 50,
           ),
-          SizedBox(height: 50,),
           ElevatedButton(
               onPressed: () {
-                mainUser.communities.elementAt(0).posts.add(new Post(caption: captionC.text,
-                    imageDirectory: "assets/google.png", owner: mainUser));
+                widget.mainUser.communities.elementAt(0).posts.add(new Post(
+                    caption: captionC.text,
+                    imageDirectory: "assets/google.png",
+                    owner: widget.mainUser));
                 captionC.clear();
               },
               child: Text("Upload new post"))
@@ -71,4 +97,3 @@ class Add extends StatelessWidget {
     );
   }
 }
-
