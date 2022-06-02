@@ -229,11 +229,13 @@ class _PostItemState extends State<PostItem> {
                                           padding: EdgeInsets.only(top: 70),
                                           child: ListView.builder(
                                               itemCount:
-                                                  widget.post.comments.length,
+                                                  widget.post.comments.length + 1,
                                               itemBuilder: (context, i) {
+                                                if (i == 0)
+                                                  return Text(widget.post.comments.length.toString() + " comment(s) are available");
                                                 return CommentItem(
                                                   comment: widget.post.comments
-                                                      .elementAt(i),
+                                                      .elementAt(i - 1),
                                                 );
                                               }),
                                         )
