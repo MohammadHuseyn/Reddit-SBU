@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_mu/Authentication/Login.dart';
 import 'package:test_mu/Classes/CommentClass.dart';
 import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/bottomSwitcher/comment.dart';
@@ -17,6 +18,7 @@ class BottomSwitcher extends StatefulWidget {
 
 class _BottomSwitcherState extends State<BottomSwitcher> {
   int index = 0;
+  bool login = false;
   static List<Widget> _swithcerView = [
     Home(mainUser: mainUser,),
     Search(communities: communities),
@@ -51,24 +53,24 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
     post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
        users[2].communities[0].posts.add(new Post(owner: users[2], imageDirectory: "assets/google.png", caption: "caption3"));
        users[1].communities[0].posts[0].date = DateTime(2022,3,1);
-    return Scaffold(
-      body: Center(
-        child: _swithcerView.elementAt(index),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: index,
-        onTap: _onTapNavigationItemBar,
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: _SwitcherItems.map((e) =>
-          BottomNavigationBarItem(
-              icon: Icon(e.icon),
-            activeIcon: Icon(e.activeIcon),
-            label: e.title,
-          )
-        ).toList(),
+      return Scaffold(
+        body: Center(
+          child: _swithcerView.elementAt(index),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          currentIndex: index,
+          onTap: _onTapNavigationItemBar,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          items: _SwitcherItems.map((e) =>
+              BottomNavigationBarItem(
+                icon: Icon(e.icon),
+                activeIcon: Icon(e.activeIcon),
+                label: e.title,
+              )
+          ).toList(),
         ),
       );
   }

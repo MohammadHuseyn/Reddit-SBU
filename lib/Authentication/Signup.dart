@@ -1,5 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:test_mu/Authentication/Login.dart';
+
+import '../PageNavigator.dart';
 
 class Signuppage extends StatefulWidget {
   const Signuppage({Key key}) : super(key: key);
@@ -13,6 +16,7 @@ class _SignuppageState extends State<Signuppage> {
   bool rememberMe = false;
   bool unvisibility = true;
 
+  bool login = false;
   void changestateunvisibility() {
     setState(() {
       unvisibility = !unvisibility;
@@ -147,7 +151,7 @@ class _SignuppageState extends State<Signuppage> {
             borderRadius: new BorderRadius.circular(30.0),
           ),
         ),
-        onPressed: () => print('Signup Button Pressed'),
+         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BottomSwitcher())),
         child: Text(
           'SignUp',
           style: TextStyle(
@@ -273,7 +277,7 @@ class _SignuppageState extends State<Signuppage> {
         ),
         GestureDetector(
           onTap: () {
-            print('or Sign in pressed');
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Loginpage()));
           },
           child: Text(
             'Sign in',
@@ -289,7 +293,15 @@ class _SignuppageState extends State<Signuppage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    if(login){
+      return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: BottomSwitcher(),
+      );
+    }else return Scaffold(
       body: Stack(
         children: <Widget>[
           Container(

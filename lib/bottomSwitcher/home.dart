@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/bottomSwitcher/PostItem.dart';
-
+import '../Authentication/Login.dart';
 import '../Classes/User.dart';
 
 Container loop(Community community,BuildContext context) {
@@ -16,20 +16,25 @@ Container loop(Community community,BuildContext context) {
   );
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({this.mainUser});
 
   User mainUser;
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
-      child: ListView.builder(
-          itemCount: mainUser.communities.length,
-          itemBuilder: (context, i)  {
-            return loop(mainUser.communities.elementAt(i),context);
-          }),
-    );
-  }
+        height: MediaQuery.of(context).size.height,
+        child: ListView.builder(
+            itemCount: widget.mainUser.communities.length,
+            itemBuilder: (context, i)  {
+              return loop(widget.mainUser.communities.elementAt(i),context);
+            }),
+      );
+    }
 }
