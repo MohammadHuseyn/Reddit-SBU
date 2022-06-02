@@ -40,6 +40,9 @@ class _SearchState extends State<Search> {
                 ),
                 title: Text(communities.elementAt(i).name),
                 subtitle: Text(communities.elementAt(i).descriptoin),
+                onTap: (){
+                  showSearch(context: context, delegate: MySearchDelegate(),query: communities.elementAt(i).name);
+                },
               );
             },
           ),
