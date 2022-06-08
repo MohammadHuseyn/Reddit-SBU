@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_mu/Authentication/Login.dart';
 import 'package:test_mu/Classes/CommentClass.dart';
 import 'package:test_mu/Classes/Community.dart';
-import 'package:test_mu/bottomSwitcher/comment.dart';
+// import 'package:test_mu/bottomSwitcher/comment.dart';
 import 'package:test_mu/bottomSwitcher/settings.dart';
 import 'package:test_mu/bottomSwitcher/home.dart';
 import 'package:test_mu/bottomSwitcher/add.dart';
@@ -23,7 +23,6 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
     Home(mainUser: mainUser,),
     Search(communities: communities),
     Add(mainUser: users[1],),
-    Comment(),
     Settings(),
   ];
 
@@ -90,11 +89,6 @@ List<SwitcherModel> _SwitcherItems = [
     icon: Icons.add_circle_outline,
     activeIcon: Icons.add_circle,
     title: "New post",
-  ),
-  SwitcherModel(
-    icon: Icons.comment_outlined,
-    activeIcon: Icons.comment,
-    title: "Comments",
   ),
   SwitcherModel(
     icon: Icons.settings,

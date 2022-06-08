@@ -6,7 +6,7 @@ import 'package:test_mu/Classes/CommentClass.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/PageNavigator.dart';
 import 'CommentItem.dart';
-import 'comment.dart';
+// import 'comment.dart';
 
 class PostItem extends StatefulWidget {
   PostItem({this.post});
