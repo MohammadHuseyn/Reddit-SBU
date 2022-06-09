@@ -2,10 +2,12 @@ import 'dart:html';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:test_mu/Authentication/Signup.dart';
 import 'package:test_mu/Classes/CommentClass.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/PageNavigator.dart';
 import 'CommentItem.dart';
+import 'PostDetails.dart';
 // import 'comment.dart';
 
 class PostItem extends StatefulWidget {
@@ -53,7 +55,9 @@ class _PostItemState extends State<PostItem> {
           " second(s)";
     ago += " ago, ";
     return Container(
-        color: Colors.black87,
+      color: Colors.black87,
+      child: InkWell(
+        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetails(post: widget.post,))),
         child: Column(
           children: [
             Container(
@@ -229,10 +233,14 @@ class _PostItemState extends State<PostItem> {
                                           padding: EdgeInsets.only(top: 70),
                                           child: ListView.builder(
                                               itemCount:
-                                                  widget.post.comments.length + 1,
+                                                  widget.post.comments.length +
+                                                      1,
                                               itemBuilder: (context, i) {
                                                 if (i == 0)
-                                                  return Text(widget.post.comments.length.toString() + " comment(s) are available");
+                                                  return Text(widget
+                                                          .post.comments.length
+                                                          .toString() +
+                                                      " comment(s) are available");
                                                 return CommentItem(
                                                   comment: widget.post.comments
                                                       .elementAt(i - 1),
@@ -305,6 +313,8 @@ class _PostItemState extends State<PostItem> {
               ),
             ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
