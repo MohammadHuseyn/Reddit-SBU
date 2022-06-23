@@ -58,7 +58,7 @@ class _PostItemState extends State<PostItem> {
     return Container(
       color: Colors.black87,
       child: InkWell(
-        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetails(post: widget.post,))),
+        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetails(post: widget.post,ago: ago,))),
         child: Column(
           children: [
             Container(
