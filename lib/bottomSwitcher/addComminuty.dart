@@ -1,9 +1,8 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Community.dart';
-import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/PageNavigator.dart';
-
+import 'addPost.dart';
 import '../Classes/User.dart';
 
 class AddComminuty extends StatefulWidget {
@@ -17,9 +16,18 @@ class AddComminuty extends StatefulWidget {
 
 class _AddComminutyState extends State<AddComminuty> {
   final captionC = TextEditingController();
-  final imageDirectoryC = TextEditingController();
+  final nameC = TextEditingController();
+  void addCom(Community community){
+    setState((){
+      community.followers.add(mainUser);
+      community.admins.add(mainUser);
+      mainUser.communities.add(community);
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    captionC.text = "";
+    nameC.text = "";
     return Scaffold(
       appBar: AppBar(
         title: Text("Add a new post"),
@@ -34,17 +42,41 @@ class _AddComminutyState extends State<AddComminuty> {
             crossAxisAlignment: CrossAxisAlignment.center,
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: 400,
-                child: DropdownButton<Community>(
-                  hint: Text("  Select a community to publish post  ",style: TextStyle(color: Colors.white),),
-                  items: widget.mainUser.communities.map((Community value) {
-                    return DropdownMenuItem<Community>(
-                      value: value,
-                      child: Text(value.name),
-                    );
-                  }).toList(),
-                  onChanged: (_) {},
+              // Container(
+              //   width: 400,
+              //   child: DropdownButton<Community>(
+              //     hint: Text("  Select a community to publish post  ",style: TextStyle(color: Colors.white),),
+              //     items: widget.mainUser.communities.map((Community value) {
+              //       return DropdownMenuItem<Community>(
+              //         value: value,
+              //         child: Text(value.name),
+              //       );
+              //     }).toList(),
+              //     onChanged: (_) {},
+              //   ),
+              // ),
+              Theme(
+                data: new ThemeData(
+                  primaryColor: Colors.white,
+                  primaryColorDark: Colors.white,
+                ),
+                child: TextField(
+                  controller: nameC,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white)),
+                    hintText: 'Type commminuty name',
+                    hintStyle: TextStyle(color: Colors.white),
+                    labelStyle: TextStyle(color: Colors.white),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white)),
+                    labelText: 'Name',
+                    prefixIcon: Icon(
+                      Icons.short_text_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height:20,),
@@ -59,7 +91,7 @@ class _AddComminutyState extends State<AddComminuty> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white)),
-                    hintText: 'Tyepe your caption for new post',
+                    hintText: 'Type your caption for new comminuty',
                     hintStyle: TextStyle(color: Colors.white),
                     labelStyle: TextStyle(color: Colors.white),
                     enabledBorder: OutlineInputBorder(
@@ -92,14 +124,18 @@ class _AddComminutyState extends State<AddComminuty> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    widget.mainUser.communities.elementAt(0).posts.add(new Post(
-                        caption: captionC.text,
-                        // imageDirectory: "assets/google.png",
-                        owner: widget.mainUser));
-                    captionC.clear();
+                    if(captionC.text == "" || nameC.text == ""){
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("caption or name can not be empty"),
+                      ));
+                    }else{
+                      Community comminuty = new Community(owner: mainUser,descriptoin: captionC.text,name: nameC.text);
+                      addCom(comminuty);
+                      Navigator.pop(context);
+                    }
                   },
                   style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
-                  child: Text("Upload new post",style: TextStyle(fontSize: 20),))
+                  child: Text("Make new Comminuty",style: TextStyle(fontSize: 20),)),
             ],
           ),
         ),

@@ -20,6 +20,8 @@ class _AddPostState extends State<AddPost> {
   final imageDirectoryC = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    Community selectedComminuty = null;
+    captionC.text = "";
     return Scaffold(
       appBar: AppBar(
         title: Text("Add a new post"),
@@ -43,6 +45,7 @@ class _AddPostState extends State<AddPost> {
                       value: value,
                       child: Text(value.name),
                     );
+                    selectedComminuty = value;
                   }).toList(),
                   onChanged: (_) {},
                 ),
@@ -92,14 +95,21 @@ class _AddPostState extends State<AddPost> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    widget.mainUser.communities.elementAt(0).posts.add(new Post(
-                        caption: captionC.text,
-                        // imageDirectory: "assets/google.png",
-                        owner: widget.mainUser));
-                    captionC.clear();
+                    if(captionC.text == "" || selectedComminuty == null){
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("Fields can not be empty"),
+                      ));
+                    }else{
+                        Post post = new Post(owner: mainUser, caption: captionC.text,community: selectedComminuty);
+                        setState((){
+                          selectedComminuty.posts.add(post);
+                        });
+                        Navigator.pop(context);
+                    }
                   },
                   style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
-                  child: Text("Upload new post",style: TextStyle(fontSize: 20),))
+                  child: Text("Upload new post",style: TextStyle(fontSize: 20),)),
+
             ],
           ),
         ),
