@@ -43,8 +43,8 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
     mainUser.communities.add(community2);
     users[1].communities.add(community);
     users[2].communities.add(community);
-       mainUser.communities[0].following.add(users[1]);
-       mainUser.communities[0].following.add(users[2]);
+       mainUser.communities[0].followers.add(users[1]);
+       mainUser.communities[0].followers.add(users[2]);
        Post post1 = new Post(owner: users[1]/*, imageDirectory: "assets/google.png"*/, caption: "caption3");
        users[1].communities[0].posts.add(post1);
     post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
