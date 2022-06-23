@@ -4,6 +4,7 @@ import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/PageNavigator.dart';
 
 import 'PostItem.dart';
+import 'SerachResult.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -33,15 +34,19 @@ class _SearchState extends State<Search> {
         body: Container(
           child: ListView.builder(
             itemCount: communities.length,
-            itemBuilder: (context,i){
+            itemBuilder: (context, i) {
               return ListTile(
                 leading: CircleAvatar(
-                  backgroundImage: AssetImage(communities.elementAt(i).avatarDirectory),
+                  backgroundImage:
+                      AssetImage(communities.elementAt(i).avatarDirectory),
                 ),
                 title: Text(communities.elementAt(i).name),
                 subtitle: Text(communities.elementAt(i).descriptoin),
-                onTap: (){
-                  showSearch(context: context, delegate: MySearchDelegate(),query: communities.elementAt(i).name);
+                onTap: () {
+                  showSearch(
+                      context: context,
+                      delegate: MySearchDelegate(),
+                      query: communities.elementAt(i).name);
                 },
               );
             },
@@ -53,6 +58,8 @@ class _SearchState extends State<Search> {
 }
 
 class MySearchDelegate extends SearchDelegate {
+  String str;
+
   @override
   List<Widget> buildActions(BuildContext context) {
     // TODO: implement buildActions
@@ -77,96 +84,7 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    Community community;
-    for (int i = 0; i < communities.length; i++) {
-      if (communities.elementAt(i).name == query) {
-        community = communities.elementAt(i);
-        break;
-      }
-    }
-    return Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.all(20),
-        child: SingleChildScrollView(
-            child: Stack(
-          children: <Widget>[
-            Container(
-              color: Colors.black,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipOval(
-                        child: Image.asset(
-                          community.avatarDirectory,
-                          width: 175,
-                        ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          RichText(
-                              text: TextSpan(
-                                  children: [
-                                TextSpan(
-                                    text: "Tilte: ",
-                                    style: TextStyle(color: Colors.white54)),
-                                TextSpan(text: community.name + "\n"),
-                                TextSpan(
-                                    text: "Description: ",
-                                    style: TextStyle(color: Colors.white54)),
-                                TextSpan(text: community.descriptoin + "\n"),
-                                TextSpan(
-                                    text: "Description: ",
-                                    style: TextStyle(color: Colors.white54)),
-                                TextSpan(text: community.descriptoin + "\n"),
-                                TextSpan(
-                                    text: "owner: ",
-                                    style: TextStyle(color: Colors.white54)),
-                                TextSpan(text: community.owner.username + "\n"),
-                                TextSpan(
-                                    text: "number of followers: ",
-                                    style: TextStyle(color: Colors.white54)),
-                                TextSpan(
-                                    text:
-                                        community.followers.length.toString() +
-                                            "\n"),
-                                TextSpan(
-                                    text: "number of posts: ",
-                                    style: TextStyle(color: Colors.white54)),
-                                TextSpan(
-                                    text: community.posts.length.toString() +
-                                        "\n"),
-                              ],
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      height: 1.8,
-                                      color: Colors.white)))
-                        ],
-                      )
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  Container(
-                    height: 500,
-                    child: ListView.builder(
-                        itemCount: community.posts.length,
-                        itemBuilder: (context, index) {
-                          return PostItem(
-                              post: community.posts.elementAt(index));
-                        }),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        )));
+    return MaterialApp(home: SearchResult(query: query,communities: communities,mainUser: mainUser),);
   }
 
   @override
