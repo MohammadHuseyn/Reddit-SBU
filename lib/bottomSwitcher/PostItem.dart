@@ -6,6 +6,7 @@ import 'package:test_mu/Authentication/Signup.dart';
 import 'package:test_mu/Classes/CommentClass.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/PageNavigator.dart';
+import 'package:test_mu/main.dart';
 import 'CommentItem.dart';
 import 'PostDetails.dart';
 // import 'comment.dart';
@@ -281,11 +282,14 @@ class _PostItemState extends State<PostItem> {
                         onPressed: () {
                           setState(() {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("shared"),
+                              content: mainUser.savedPosts.contains(widget.post)?Text("Unsaved"):Text("saved"),
                             ));
+                            mainUser.savedPosts.contains(widget.post)?mainUser.savedPosts.remove(widget.post):mainUser.savedPosts.add(widget.post);
                           });
                         },
-                        child: Icon(Icons.send),
+                        child: Icon(Icons.save,color: mainUser.savedPosts.contains(widget.post)
+                            ? Colors.green
+                            : Colors.white,),
                         style: ElevatedButton.styleFrom(
                             primary: Colors.black54,
                             padding: EdgeInsets.all(18)),

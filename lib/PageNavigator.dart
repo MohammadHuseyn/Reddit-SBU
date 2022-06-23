@@ -34,24 +34,24 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    // Community community = new Community(owner: mainUser,/* avatarDirectory: 'assets/google.png',*/descriptoin: "desc", name: "my Comminuty");
-    // Community community2 = new Community(owner: mainUser/*, avatarDirectory: 'assets/google.png'*/,descriptoin: "desc", name: "golabi");
-    // Community newC = new Community(name: "name", owner: mainUser, /*avatarDirectory: "assets/google.png",*/ descriptoin: "desc");
-    // communities.add(community);
-    // communities.add(community2);
-    // mainUser.communities.add(community);
-    // mainUser.communities.add(community2);
-    // users[1].communities.add(community);
-    // users[2].communities.add(community);
-    //    mainUser.communities[0].following.add(users[1]);
-    //    mainUser.communities[0].following.add(users[2]);
-    //    Post post1 = new Post(owner: users[1]/*, imageDirectory: "assets/google.png"*/, caption: "caption3");
-    //    users[1].communities[0].posts.add(post1);
-    // post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
-    // post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
-    // post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
-    //    users[2].communities[0].posts.add(new Post(owner: users[2],/* imageDirectory: "assets/google.png",*/ caption: "caption3"));
-    //    users[1].communities[0].posts[0].date = DateTime(2022,3,1);
+    Community community = new Community(owner: mainUser,/* avatarDirectory: 'assets/google.png',*/descriptoin: "desc", name: "my Comminuty");
+    Community community2 = new Community(owner: mainUser/*, avatarDirectory: 'assets/google.png'*/,descriptoin: "desc", name: "golabi");
+    Community newC = new Community(name: "name", owner: mainUser, /*avatarDirectory: "assets/google.png",*/ descriptoin: "desc");
+    communities.add(community);
+    communities.add(community2);
+    mainUser.communities.add(community);
+    mainUser.communities.add(community2);
+    users[1].communities.add(community);
+    users[2].communities.add(community);
+       mainUser.communities[0].following.add(users[1]);
+       mainUser.communities[0].following.add(users[2]);
+       Post post1 = new Post(owner: users[1]/*, imageDirectory: "assets/google.png"*/, caption: "caption3");
+       users[1].communities[0].posts.add(post1);
+    post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
+    post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
+    post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
+       users[2].communities[0].posts.add(new Post(owner: users[2],/* imageDirectory: "assets/google.png",*/ caption: "caption3"));
+       users[1].communities[0].posts[0].date = DateTime(2022,3,1);
       return Scaffold(
         body: Center(
           child: _swithcerView.elementAt(index),
