@@ -99,7 +99,11 @@ class _AddPostState extends State<AddPost> {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text("Fields can not be empty"),
                       ));
-                    }else{
+                    }else if (!selectedComminuty.admins.contains(mainUser)){
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("you are not admin in this comminuty"),
+                      ));
+                    }else {
                         Post post = new Post(owner: mainUser, caption: captionC.text,community: selectedComminuty);
                         setState((){
                           selectedComminuty.posts.add(post);
