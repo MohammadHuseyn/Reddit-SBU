@@ -87,7 +87,7 @@ class _AddState extends State<Add> {
               onPressed: () {
                 widget.mainUser.communities.elementAt(0).posts.add(new Post(
                     caption: captionC.text,
-                    imageDirectory: "assets/google.png",
+                    // imageDirectory: "assets/google.png",
                     owner: widget.mainUser));
                 captionC.clear();
               },

@@ -56,12 +56,12 @@ class _SearchResultState extends State<SearchResult> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipOval(
-                    child: Image.asset(
-                      community.avatarDirectory,
-                      width: 175,
-                    ),
-                  ),
+                  // ClipOval(
+                  //   child: Image.asset(
+                  //     community.avatarDirectory,
+                  //     width: 175,
+                  //   ),
+                  // ),
                   Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,

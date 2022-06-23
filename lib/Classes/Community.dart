@@ -6,7 +6,7 @@ class Community{
   final int id = DateTime.now().millisecondsSinceEpoch; // unchangeable
   String name;
   String descriptoin;
-  String avatarDirectory;
+  // String avatarDirectory;
   User owner;
   List<User> admins = [];
   List<Post> posts = [];
@@ -17,6 +17,6 @@ class Community{
     this.owner,
     this.name,
     this.descriptoin,
-    this.avatarDirectory,
+    // this.avatarDirectory,
   });
 }

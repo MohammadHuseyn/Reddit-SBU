@@ -5,7 +5,7 @@ import 'CommentClass.dart';
 class Post {
   final int id = DateTime.now().millisecondsSinceEpoch; // unchangeable
   String caption;
-  String imageDirectory;
+  // String imageDirectory;
   Community community;
   List<User> disliked = []; // is empty at first
   List<User> liked = []; // is empty at first
@@ -16,12 +16,12 @@ class Post {
 
   Post({
     this.caption,         // nothing
-    this.imageDirectory,  // can be
+    // this.imageDirectory,  // can be
     this.owner,           // empty
     this.community,
 });
   String get getCaption => caption;
-  String get getImageDirectory => imageDirectory;
+  // String get getImageDirectory => imageDirectory;
   List<User> get getDisliked => disliked;
   List<User> get getLiked => disliked;
   List<User> get getCommented => commented;
@@ -29,7 +29,7 @@ class Post {
   set setCaption (String value){
     caption = value;
   }
-  set setImageDirectory(String value){
-    imageDirectory = value;
-  }
+  // set setImageDirectory(String value){
+  //   imageDirectory = value;
+  // }
 }

@@ -72,12 +72,12 @@ class _PostItemState extends State<PostItem> {
                 ),
               ),
             ),
-            Container(
-              child: Image(
-                image: AssetImage(widget.post.imageDirectory),
-                fit: BoxFit.cover,
-              ),
-            ),
+            // Container(
+            //   child: Image(
+            //     image: AssetImage(widget.post.imageDirectory),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
             SizedBox(
               height: 10,
             ),

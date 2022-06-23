@@ -36,10 +36,10 @@ class _SearchState extends State<Search> {
             itemCount: communities.length,
             itemBuilder: (context, i) {
               return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage:
-                      AssetImage(communities.elementAt(i).avatarDirectory),
-                ),
+                // leading: CircleAvatar(
+                //   backgroundImage:
+                //       AssetImage(communities.elementAt(i).avatarDirectory),
+                // ),
                 title: Text(communities.elementAt(i).name),
                 subtitle: Text(communities.elementAt(i).descriptoin),
                 onTap: () {

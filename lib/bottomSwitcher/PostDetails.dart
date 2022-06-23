@@ -19,7 +19,7 @@ class PostDetails extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-            Image.asset(post.imageDirectory),
+            // Image.asset(post.imageDirectory),
             Divider(
               color: Colors.black,
             ),

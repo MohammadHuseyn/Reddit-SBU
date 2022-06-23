@@ -219,32 +219,6 @@ class _LoginpageState extends State<Loginpage> {
             ),
           ),
         ),
-        SizedBox(
-          width: 20,
-        ),
-        GestureDetector(
-          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text("Not available right now"),
-          )),
-          child: Container(
-            height: 60.0,
-            width: 60.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black,
-                  offset: Offset(0, 2),
-                  blurRadius: 6.0,
-                ),
-              ],
-              image: DecorationImage(
-                image: AssetImage('assets/facebook.png'),
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }

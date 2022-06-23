@@ -41,7 +41,7 @@ class CommentItem extends StatelessWidget {
     ago += " ago, ";
     return ListTile(
       title: Text(comment.comment),
-      leading: CircleAvatar(backgroundImage: AssetImage(comment.owner.avatarDirectory),),
+      // leading: CircleAvatar(backgroundImage: AssetImage(comment.owner.avatarDirectory),),
       subtitle: Text(comment.owner.username + ", " + ago),
     );
   }
