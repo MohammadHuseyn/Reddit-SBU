@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:test_mu/Authentication/Login.dart';
 import 'package:test_mu/Authentication/Signup.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({Key key}) : super(key: key);
+import '../Classes/User.dart';
 
+class Settings extends StatefulWidget {
+  Settings({this.mainUser});
+  User mainUser;
   @override
   State<Settings> createState() => _SettingsState();
 }
@@ -13,7 +15,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.grey.shade200,
@@ -33,22 +35,25 @@ class _SettingsState extends State<Settings> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                   margin: const EdgeInsets.all(8.0),
-                  color: Colors.red,
+                  color: Colors.white54,
                   child: ListTile(
                     onTap: () {},
-                    title: Text(
-                      "username",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w400),
+                    title: Center(
+                      child: Text(
+                        widget.mainUser.username,
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w400,fontSize: 20),
+                      ),
                     ),
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('assets/google.png'),
-                    ),
-                    trailing: Icon(Icons.edit,color: Colors.white,),
+                    // leading: CircleAvatar(
+                    //   backgroundImage: AssetImage('assets/google.png'),
+                    // ),
+                    // trailing: Icon(Icons.edit,color: Colors.white54,),
                   ),
                 ),
                 const SizedBox(height: 10.0,),
                 Card(
+                  color: Colors.white54,
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 16.0),
                   shape: RoundedRectangleBorder(
@@ -58,7 +63,7 @@ class _SettingsState extends State<Settings> {
                       ListTile(
                         leading: Icon(
                           Icons.lock_outline,
-                          color: Colors.red,
+                          color: Colors.white,
                         ),
                         title: Text("Change Password"),
                         trailing: Icon(Icons.keyboard_arrow_right),
@@ -72,7 +77,7 @@ class _SettingsState extends State<Settings> {
                       ListTile(
                         leading: Icon(
                           Icons.language,
-                          color: Colors.red,
+                          color: Colors.white,
                         ),
                         title: Text("Change Language"),
                         trailing: Icon(Icons.keyboard_arrow_right),
@@ -86,7 +91,7 @@ class _SettingsState extends State<Settings> {
                       ListTile(
                         leading: Icon(
                           Icons.location_on_rounded,
-                          color: Colors.red,
+                          color: Colors.white,
                         ),
                         title: Text("Change Location"),
                         trailing: Icon(Icons.keyboard_arrow_right),
@@ -100,7 +105,7 @@ class _SettingsState extends State<Settings> {
                       ListTile(
                         leading: Icon(
                           Icons.build,
-                          color: Colors.red,
+                          color: Colors.white,
                         ),
                         title: Text("Build Cmmunity"),
                         trailing: Icon(Icons.keyboard_arrow_right),
@@ -114,7 +119,7 @@ class _SettingsState extends State<Settings> {
                       ListTile(
                         leading: Icon(
                           Icons.save_alt,
-                          color: Colors.red,
+                          color: Colors.white,
                         ),
                         title: Text("Saved Posts"),
                         trailing: Icon(Icons.keyboard_arrow_right),

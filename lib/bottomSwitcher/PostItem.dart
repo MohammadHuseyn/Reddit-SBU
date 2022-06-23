@@ -67,9 +67,9 @@ class _PostItemState extends State<PostItem> {
                   widget.post.owner.username,
                   style: TextStyle(color: Colors.white),
                 ),
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage('assets/google.png'),
-                ),
+                // leading: CircleAvatar(
+                //   backgroundImage: AssetImage('assets/google.png'),
+                // ),
               ),
             ),
             // Container(
@@ -86,6 +86,14 @@ class _PostItemState extends State<PostItem> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 20,right: 20),
+                    child: RichText(
+                      text: TextSpan(
+                        text: widget.post.caption + "\n",
+                        style:
+                        TextStyle(color: Colors.white, fontSize: 17)),),
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -297,10 +305,6 @@ class _PostItemState extends State<PostItem> {
                               color: Colors.white70,
                               fontSize: 15,
                             )),
-                        TextSpan(
-                            text: widget.post.caption,
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 17)),
                       ]),
                     ),
                   ),

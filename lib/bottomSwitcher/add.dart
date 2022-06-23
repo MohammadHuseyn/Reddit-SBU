@@ -68,18 +68,18 @@ class _AddState extends State<Add> {
           SizedBox(
             height: 50,
           ),
-          ElevatedButton(
-              onPressed: () async {
-                FilePickerResult result = await FilePicker.platform.pickFiles();
-                if (result != null) {
-                  print(result.files.first.name);
-                }
-                imageDirectoryC.text = "assets/google.png";
-              },
-              child: Text(
-                "choose image for new post",
-                style: TextStyle(color: Colors.white),
-              )),
+          // ElevatedButton(
+          //     onPressed: () async {
+          //       FilePickerResult result = await FilePicker.platform.pickFiles();
+          //       if (result != null) {
+          //         print(result.files.first.name);
+          //       }
+          //       imageDirectoryC.text = "assets/google.png";
+          //     },
+          //     child: Text(
+          //       "choose image for new post",
+          //       style: TextStyle(color: Colors.white),
+          //     )),
           SizedBox(
             height: 50,
           ),
@@ -91,7 +91,8 @@ class _AddState extends State<Add> {
                     owner: widget.mainUser));
                 captionC.clear();
               },
-              child: Text("Upload new post"))
+              style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
+              child: Text("Upload new post",style: TextStyle(fontSize: 20),))
         ],
       ),
     );

@@ -23,7 +23,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
     Home(mainUser: mainUser,),
     Search(communities: communities),
     Add(mainUser: users[1],),
-    Settings(),
+    Settings(mainUser: mainUser),
   ];
 
   void _onTapNavigationItemBar(int i){
@@ -57,7 +57,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
           child: _swithcerView.elementAt(index),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black54,
           currentIndex: index,
           onTap: _onTapNavigationItemBar,
           showSelectedLabels: true,
@@ -66,10 +66,11 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
           items: _SwitcherItems.map((e) =>
               BottomNavigationBarItem(
                 icon: Icon(e.icon),
-                activeIcon: Icon(e.activeIcon),
+                activeIcon: Icon(e.activeIcon,color: Colors.white,),
                 label: e.title,
               )
           ).toList(),
+          selectedItemColor: Colors.white,
         ),
       );
   }

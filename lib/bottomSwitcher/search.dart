@@ -19,12 +19,14 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData(),
+      data: ThemeData(backgroundColor: Colors.black54),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           title: Text("Explore in communities"),
           actions: [
             IconButton(
+              color: Colors.white,
                 onPressed: () {
                   showSearch(context: context, delegate: MySearchDelegate());
                 },
@@ -32,6 +34,7 @@ class _SearchState extends State<Search> {
           ],
         ),
         body: Container(
+          color: Colors.black12,
           child: ListView.builder(
             itemCount: communities.length,
             itemBuilder: (context, i) {
@@ -95,17 +98,20 @@ class MySearchDelegate extends SearchDelegate {
       final input = query.toLowerCase();
       return result.contains(input);
     }).toList();
-    return ListView.builder(
-      itemCount: searchResults.length,
-      itemBuilder: (context, i) {
-        return ListTile(
-          title: Text(searchResults.elementAt(i).name),
-          onTap: () {
-            query = searchResults.elementAt(i).name;
-            showResults(context);
-          },
-        );
-      },
+    return Container(
+      color: Colors.black54,
+      child: ListView.builder(
+        itemCount: searchResults.length,
+        itemBuilder: (context, i) {
+          return ListTile(
+            title: Text(searchResults.elementAt(i).name,style: TextStyle(color: Colors.white),),
+            onTap: () {
+              query = searchResults.elementAt(i).name;
+              showResults(context);
+            },
+          );
+        },
+      ),
     );
   }
 }
