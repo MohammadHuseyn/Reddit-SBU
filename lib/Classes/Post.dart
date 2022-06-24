@@ -9,7 +9,6 @@ class Post {
   Community community;
   List<User> disliked = []; // is empty at first
   List<User> liked = []; // is empty at first
-  List<User> commented = []; // is empty at first
   List<CommentClass> comments = []; // is empty at first
   User owner;
   DateTime date = DateTime.now(); // unchangeable
@@ -24,7 +23,6 @@ class Post {
   // String get getImageDirectory => imageDirectory;
   List<User> get getDisliked => disliked;
   List<User> get getLiked => disliked;
-  List<User> get getCommented => commented;
   List<CommentClass> get getComments => comments;
   set setCaption (String value){
     caption = value;

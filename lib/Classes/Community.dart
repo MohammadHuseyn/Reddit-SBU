@@ -10,7 +10,6 @@ class Community{
   User owner;
   List<User> admins = [];
   List<Post> posts = [];
-  List<User> following = []; // is empty at first
   List<User> followers = [];
   final DateTime dateCreated = DateTime.now(); // unchangeable
   Community({
