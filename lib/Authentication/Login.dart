@@ -164,8 +164,11 @@ Future<String> _sendMassage() {
           ),
         ),
         onPressed: () async{
-          Socket client = await Socket.connect('localhost', 16);
-          client.write('hello there\n');
+          Socket client = await Socket.connect('172.20.173.31', 16);
+          print("connected");
+          client.write("test\n");
+          client.flush();
+          print("send");
           // if(b==true) {
           //   Navigator.push(context,
           //       MaterialPageRoute(builder: (context) => BottomSwitcher()));
