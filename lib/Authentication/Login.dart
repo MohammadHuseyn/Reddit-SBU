@@ -136,6 +136,7 @@ Future<String> _sendMassage() {
           ),
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0),
+            
           ),
         ),
         onPressed: () async{
