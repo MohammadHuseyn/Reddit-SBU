@@ -15,10 +15,8 @@ class Loginpage extends StatefulWidget {
 class _LoginpageState extends State<Loginpage> {
   bool rememberMe = false;
   bool unvisibility = true;
-  TextEditingController userName;
-  TextEditingController passWord;
-  TextEditingController mail;
-  Socket socket;
+  final userName = TextEditingController();
+  final passWord = TextEditingController();
   bool login = false;
   void changestateunvisibility() {
     setState(() {
@@ -49,29 +47,6 @@ class _LoginpageState extends State<Loginpage> {
                 onPressed: changestateunvisibility,
               ),
               hintText: 'Enter your Password',
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _MailBox() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          alignment: Alignment.centerLeft,
-          height: 60.0,
-          child: TextField(
-            controller: mail,
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(Icons.email, color: Colors.blueGrey),
-              hintText: 'Enter your Mail',
             ),
           ),
         ),
@@ -164,19 +139,22 @@ Future<String> _sendMassage() {
           ),
         ),
         onPressed: () async{
-          Socket client = await Socket.connect('172.20.173.31', 16);
+          Socket client = await Socket.connect('172.20.177.166', 10);
           print("connected");
-          client.write("test\n");
+          client.write("L"+"*"+userName.text+"*"+passWord.text+"#");
           client.flush();
           print("send");
-          // if(b==true) {
-          //   Navigator.push(context,
-          //       MaterialPageRoute(builder: (context) => BottomSwitcher()));
-          //   sleep(Duration(milliseconds: 1000));
-          //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          //     content: Text("You are loged in now"),
-          //   ));
-          // }else{print("sonthimg is wrong");}
+          String string;
+          client.listen((socket) {
+            string = String.fromCharCodes(socket).trim().substring(2);
+            print(string);
+          });
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BottomSwitcher()));
+            sleep(Duration(milliseconds: 1000));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("You are loged in now"),
+            ));
         },
           child: Text(
           'Login',
@@ -339,7 +317,6 @@ Future<String> _sendMassage() {
                   SizedBox(height: 30.0),
                   _Userbox(),
                   _Passwordbox(),
-                  _MailBox(),
                   Container(
                       child: Row(
                     children: [
