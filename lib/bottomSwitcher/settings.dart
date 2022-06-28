@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_mu/Authentication/Login.dart';
 import 'package:test_mu/Authentication/Signup.dart';
 import 'package:test_mu/PageNavigator.dart';
+import 'package:test_mu/setting%20pages/ChangePass.dart';
 import 'package:test_mu/setting%20pages/SavedPosts.dart';
 
 import '../Classes/User.dart';
@@ -70,7 +71,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         title: Text("Change Password"),
                         trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {},
+                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePass()));},
                       ),
                       Container(
                         width: double.infinity,
