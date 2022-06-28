@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/Classes/Post.dart';
 import 'package:test_mu/PageNavigator.dart';
+import 'package:test_mu/bottomSwitcher/addComminuty.dart';
 
 import '../Classes/User.dart';
 
@@ -150,6 +151,13 @@ class _AddPostState extends State<AddPost> {
             style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
             child: Text(
               "Upload new post", style: TextStyle(fontSize: 20),)),
+                SizedBox(height: 50,),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddComminuty()));
+                    },
+                    style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
+                    child: Text("Add community",style: TextStyle(fontSize: 20),)),
 
         ],
       ),

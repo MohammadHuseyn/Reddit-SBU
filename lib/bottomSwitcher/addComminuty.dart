@@ -140,6 +140,13 @@ class _AddComminutyState extends State<AddComminuty> {
                   },
                   style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
                   child: Text("Make new Comminuty",style: TextStyle(fontSize: 20),)),
+              SizedBox(height: 50,),
+              ElevatedButton(
+                  onPressed: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => AddPost()));
+                  },
+                  style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
+                  child: Text("Add post",style: TextStyle(fontSize: 20),)),
             ],
           ),
         ),
