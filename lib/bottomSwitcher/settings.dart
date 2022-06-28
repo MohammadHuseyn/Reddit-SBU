@@ -6,6 +6,7 @@ import 'package:test_mu/setting%20pages/ChangePass.dart';
 import 'package:test_mu/setting%20pages/SavedPosts.dart';
 
 import '../Classes/User.dart';
+import '../setting pages/ChangeUserInfo.dart';
 
 class Settings extends StatefulWidget {
   Settings({this.mainUser});
@@ -80,12 +81,12 @@ class _SettingsState extends State<Settings> {
                       ),
                       ListTile(
                         leading: Icon(
-                          Icons.language,
+                          Icons.short_text_outlined,
                           color: Colors.white,
                         ),
-                        title: Text("Change Language"),
+                        title: Text("Change user info"),
                         trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {},
+                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeUserInfo()));},
                       ),
                       Container(
                         width: double.infinity,
