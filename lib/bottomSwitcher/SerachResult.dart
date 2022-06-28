@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Community.dart';
@@ -80,20 +82,48 @@ class _SearchResultState extends State<SearchResult> {
                     context: context,
                     builder: (BuildContext context) {
                       return Container(
-                        height: 200,
-                        color: Colors.amber,
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              const Text('Modal BottomSheet'),
-                              ElevatedButton(
-                                child: const Text('Close BottomSheet'),
-                                onPressed: () => Navigator.pop(context),
-                              )
-                            ],
-                          ),
+                        height: 500,
+                        color: Colors.indigo,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Transform.rotate(
+                              angle: 3 * pi / 2,
+                              child: Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,)),
+                            ),
+                            SizedBox(height: 20,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text("Posts", style: TextStyle(color: Colors.white,fontSize: 25),),
+                                    SizedBox(height: 20,),
+                                    Text(community.posts.length.toString(), style: TextStyle(color: Colors.white,fontSize: 25),)
+                                  ],
+                                ),
+                                SizedBox(width: 60,),
+                                Column(
+                                  children: [
+                                    Text("Followers",style: TextStyle(color: Colors.white,fontSize: 25),),
+                                    SizedBox(height: 20,),
+                                    Text(community.followers.length.toString(), style: TextStyle(color: Colors.white,fontSize: 25),)
+                                  ],
+                                ),
+                                SizedBox(width: 60,),
+                                Column(
+                                  children: [
+                                    Text("Admins",style: TextStyle(color: Colors.white,fontSize: 25),),
+                                    SizedBox(height: 20,),
+                                    Text(community.admins.length.toString(), style: TextStyle(color: Colors.white,fontSize: 25),)
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
                         ),
                       );
                     },
