@@ -17,6 +17,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.grey.shade200,
         title: Text(
@@ -35,14 +36,14 @@ class _SettingsState extends State<Settings> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                   margin: const EdgeInsets.all(8.0),
-                  color: Colors.white54,
+                  color: Colors.indigo,
                   child: ListTile(
                     onTap: () {},
                     title: Center(
                       child: Text(
                         widget.mainUser.username,
                         style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w400,fontSize: 20),
+                            color: Colors.white, fontWeight: FontWeight.w400,fontSize: 20),
                       ),
                     ),
                     // leading: CircleAvatar(

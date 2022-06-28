@@ -19,6 +19,7 @@ class _AddState extends State<Add> {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.black54,
           title: Text("Select Comminuty or post"),
         ),
@@ -49,7 +50,7 @@ class _AddState extends State<Add> {
             ),
             GestureDetector(
               child: Container(
-                color: Colors.indigo,
+                color: Colors.deepOrangeAccent,
                 width: MediaQuery.of(context).size.width / 2,
                 child: Center(
                     child: Column(

@@ -58,7 +58,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
           child: _swithcerView.elementAt(index),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black54,
+          backgroundColor: Colors.indigo,
           currentIndex: index,
           onTap: _onTapNavigationItemBar,
           showSelectedLabels: true,

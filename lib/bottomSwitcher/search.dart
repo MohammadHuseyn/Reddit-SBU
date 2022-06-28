@@ -22,6 +22,7 @@ class _SearchState extends State<Search> {
       data: ThemeData(backgroundColor: Colors.black54),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.black,
           title: Text("Explore in communities"),
           actions: [
