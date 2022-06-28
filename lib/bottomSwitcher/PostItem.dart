@@ -65,7 +65,7 @@ class _PostItemState extends State<PostItem> {
               color: Colors.transparent,
               child: ListTile(
                 title: Text(
-                  widget.post.owner.username,
+                  widget.post.community.name + " from " + widget.post.owner.username,
                   style: TextStyle(color: Colors.white),
                 ),
                 // leading: CircleAvatar(
@@ -304,7 +304,7 @@ class _PostItemState extends State<PostItem> {
                     child: RichText(
                       text: TextSpan(children: <TextSpan>[
                         TextSpan(
-                            text: ago + widget.post.owner.firstName + ": ",
+                            text: ago,
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 15,
