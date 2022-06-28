@@ -26,7 +26,6 @@ class _AddPostState extends State<AddPost> {
     // for(int i = 0; i < mainUser.communities.length; i++){
     //   print(mainUser.communities.elementAt(i).name);
     // }
-    Community selectedComminuty = null;
     captionC.text = "";
     return Scaffold(
       appBar: AppBar(
@@ -130,20 +129,20 @@ class _AddPostState extends State<AddPost> {
         ),
         ElevatedButton(
             onPressed: () {
-              if (captionC.text == "" || selectedComminuty == null) {
+              if (captionC.text == "" || value == null) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text("Fields can not be empty"),
                 ));
-              } else if (!selectedComminuty.admins.contains(mainUser)) {
+              } else if (!value.admins.contains(mainUser)) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text("you are not admin in this comminuty"),
                 ));
               } else {
                 Post post = new Post(owner: mainUser,
                     caption: captionC.text,
-                    community: selectedComminuty);
+                    community: value);
                 setState(() {
-                  selectedComminuty.posts.add(post);
+                  value.posts.add(post);
                 });
                 Navigator.pop(context);
               }
