@@ -22,49 +22,72 @@ class _AddState extends State<Add> {
           backgroundColor: Colors.black54,
           title: Text("Select Comminuty or post"),
         ),
-        body: Column(
+        body: Row(
           children: [
-            SizedBox(
-              height: 50,
+            Container(
+              color:  Colors.green,
+              width: MediaQuery.of(context).size.width/2,
+              child: GestureDetector(
+                child: Center(child: Text("POST",style: TextStyle(color: Colors.white,fontSize: 35),),),
+                onTap: () => print("post"),
+
+              ),
             ),
-            Center(
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddComminuty(
-                                    mainUser: widget.mainUser,
-                                  )));
-                    },
-                    style:
-                        ElevatedButton.styleFrom(padding: EdgeInsets.all(30),
-                        primary: Colors.white),
-                    child: Text(
-                      "Comminuty",
-                      style: TextStyle(fontSize: 20,color: Colors.black),
-                    ))),
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30),
-                  primary: Colors.white),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AddPost(
-                                  mainUser: widget.mainUser,
-                                )));
-                  },
-                  child: Text(
-                    "Post",
-                    style: TextStyle(fontSize: 20,color: Colors.black),
-                  )),
+            Container(
+              color:  Colors.indigo,
+              width: MediaQuery.of(context).size.width/2,
+              child: GestureDetector(
+                child: Center(child: Text("COMMINUTY",style: TextStyle(color: Colors.white,fontSize: 35),)),
+                onTap: () => print("comminuty"),
+
+              ),
             ),
           ],
-        ));
+        )
+        // Column(
+        //   children: [
+        //     SizedBox(
+        //       height: 50,
+        //     ),
+        //     Center(
+        //         child: ElevatedButton(
+        //             onPressed: () {
+        //               Navigator.push(
+        //                   context,
+        //                   MaterialPageRoute(
+        //                       builder: (context) => AddComminuty(
+        //                         mainUser: widget.mainUser,
+        //                       )));
+        //             },
+        //             style:
+        //             ElevatedButton.styleFrom(padding: EdgeInsets.all(30),
+        //                 primary: Colors.white),
+        //             child: Text(
+        //               "Comminuty",
+        //               style: TextStyle(fontSize: 20,color: Colors.black),
+        //             ))),
+        //     SizedBox(
+        //       height: 50,
+        //     ),
+        //     Center(
+        //       child: ElevatedButton(
+        //           style: ElevatedButton.styleFrom(padding: EdgeInsets.all(30),
+        //               primary: Colors.white),
+        //           onPressed: () {
+        //             Navigator.push(
+        //                 context,
+        //                 MaterialPageRoute(
+        //                     builder: (context) => AddPost(
+        //                       mainUser: widget.mainUser,
+        //                     )));
+        //           },
+        //           child: Text(
+        //             "Post",
+        //             style: TextStyle(fontSize: 20,color: Colors.black),
+        //           )),
+        //     ),
+        //   ],
+        // )
+    );
   }
 }
