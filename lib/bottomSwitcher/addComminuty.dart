@@ -17,11 +17,12 @@ class AddComminuty extends StatefulWidget {
 class _AddComminutyState extends State<AddComminuty> {
   final captionC = TextEditingController();
   final nameC = TextEditingController();
-  void addCom(Community community){
+  void addCom({String name, String caption}){
     setState((){
-      community.followers.add(mainUser);
-      community.admins.add(mainUser);
-      mainUser.communities.add(community);
+      Community comminuty = new Community(owner: mainUser,descriptoin: caption,name: name);
+      comminuty.followers.add(mainUser);
+      comminuty.admins.add(mainUser);
+      mainUser.communities.add(comminuty);
     });
   }
   @override
@@ -30,7 +31,7 @@ class _AddComminutyState extends State<AddComminuty> {
     nameC.text = "";
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add a new post"),
+        title: Text("Add a new comminuty"),
         backgroundColor: Colors.black54,
       ),
       body: Container(
@@ -129,8 +130,11 @@ class _AddComminutyState extends State<AddComminuty> {
                         content: Text("caption or name can not be empty"),
                       ));
                     }else{
-                      Community comminuty = new Community(owner: mainUser,descriptoin: captionC.text,name: nameC.text);
-                      addCom(comminuty);
+                      addCom(name: nameC.text, caption: captionC.text);
+                      // print("comminty");
+                      // for(int i = 0; i < mainUser.communities.length; i++){
+                      //   print(mainUser.communities.elementAt(i).name);
+                      // }
                       Navigator.pop(context);
                     }
                   },

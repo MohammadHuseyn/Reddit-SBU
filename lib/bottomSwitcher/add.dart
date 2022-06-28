@@ -24,23 +24,51 @@ class _AddState extends State<Add> {
         ),
         body: Row(
           children: [
-            Container(
-              color:  Colors.green,
-              width: MediaQuery.of(context).size.width/2,
-              child: GestureDetector(
-                child: Center(child: Text("POST",style: TextStyle(color: Colors.white,fontSize: 35),),),
-                onTap: () => print("post"),
-
+            GestureDetector(
+              child: Container(
+                color: Colors.green,
+                width: MediaQuery.of(context).size.width / 2,
+                child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "POST",
+                          style: TextStyle(color: Colors.white, fontSize: 35),
+                        ),
+                        Icon(Icons.post_add,size: 40,color: Colors.white,)
+                      ],
+                    )),
               ),
+              onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => AddPost(
+              mainUser: widget.mainUser,
+            ))),
             ),
-            Container(
-              color:  Colors.indigo,
-              width: MediaQuery.of(context).size.width/2,
-              child: GestureDetector(
-                child: Center(child: Text("COMMINUTY",style: TextStyle(color: Colors.white,fontSize: 35),)),
-                onTap: () => print("comminuty"),
-
+            GestureDetector(
+              child: Container(
+                color: Colors.indigo,
+                width: MediaQuery.of(context).size.width / 2,
+                child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                  "COMMINUTY",
+                  style: TextStyle(color: Colors.white, fontSize: 35),
+                ),
+                        Icon(Icons.group_add,size: 40,color: Colors.white)
+                      ],
+                    )),
               ),
+              onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AddComminuty(
+                                    mainUser: widget.mainUser,
+                                  ))),
             ),
           ],
         )
@@ -88,6 +116,6 @@ class _AddState extends State<Add> {
         //     ),
         //   ],
         // )
-    );
+        );
   }
 }
