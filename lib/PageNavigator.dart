@@ -45,7 +45,7 @@ class _BottomSwitcherState extends State<BottomSwitcher> {
     // users[2].communities.add(community);
     //    mainUser.communities[0].followers.add(users[1]);
     //    mainUser.communities[0].followers.add(users[2]);
-       Post post1 = new Post(owner: users[1]/*, imageDirectory: "assets/google.png"*/, caption: "caption3",community: community);
+       Post post1 = new Post(owner: mainUser/*, imageDirectory: "assets/google.png"*/, caption: "caption3",community: community);
       communities.elementAt(0).posts.add(post1);
        // users[1].communities[0].posts.add(post1);
     // post1.comments.add(new CommentClass(owner: mainUser, comment: "hello", onPost: post1));
@@ -103,10 +103,10 @@ List<Community> communities = [
 ];
 List<User> users = [
   new User(
-    firstName: "firstName1",
-    lastName: "lastName1",
+    firstName: "MohammadHuseyn",
+    lastName: "Amini",
     password: "password",
-    username: "username1",
+    username: "mammadeshan",
     // avatarDirectory: "assets/avatars/avatar.jpg"
   ),
   new User(

@@ -4,16 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_mu/Classes/Community.dart';
 import 'package:test_mu/PageNavigator.dart';
+import '../Classes/Post.dart';
 import '../Classes/User.dart';
 import 'PostItem.dart';
 
 class SearchResult extends StatefulWidget {
-  SearchResult({this.mainUser, this.communities, this.query});
+  SearchResult({this.mainUser, this.communities, this.query,this.community});
 
   List<Community> communities;
   String query;
   User mainUser;
-
+  Community community;
   @override
   State<SearchResult> createState() => _SearchResultState();
 }
@@ -24,11 +25,13 @@ class _SearchResultState extends State<SearchResult> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement buildResults
-    Community community;
-    for (int i = 0; i < widget.communities.length; i++) {
-      if (widget.communities.elementAt(i).name == widget.query) {
-        community = widget.communities.elementAt(i);
-        break;
+    Community community = widget.community;
+    if(community == null){
+      for (int i = 0; i < widget.communities.length; i++) {
+        if (widget.communities.elementAt(i).name == widget.query) {
+          community = widget.communities.elementAt(i);
+          break;
+        }
       }
     }
     str = mainUser.communities.contains(community)
@@ -54,7 +57,7 @@ class _SearchResultState extends State<SearchResult> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          community.owner.username,
+          community.name,
         ),
       ),
       body: Column(

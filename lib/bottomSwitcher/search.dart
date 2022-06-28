@@ -87,7 +87,7 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return MaterialApp(home: SearchResult(query: query,communities: communities,mainUser: mainUser),);
+    return MaterialApp(home: SearchResult(query: query,communities: communities,mainUser: mainUser,community: null),);
   }
 
   @override
