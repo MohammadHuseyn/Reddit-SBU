@@ -146,10 +146,13 @@ Future<String> _sendMassage() {
           client.write("L"+"*"+userName.text+"*"+passWord.text+"#");
           client.flush();
           print("send");
+          //String string = "";
           String string = "";
           client.listen((socket) async {
-            string = await String.fromCharCodes(socket).trim().substring(2);
+            string = await "";
+            string = String.fromCharCodes(socket).trim().substring(2);
           });
+          print(string);
           if(string.length == 0) {
             b = true;
           }
@@ -163,7 +166,7 @@ Future<String> _sendMassage() {
             ));
           }else{
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("Not available right now"),
+              content: Text("Username or Password is uncorrect"),
             ));
           }
         },

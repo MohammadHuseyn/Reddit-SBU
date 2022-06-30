@@ -162,20 +162,36 @@ class _SignuppageState extends State<Signuppage> {
           ),
         ),
         onPressed: () async{
+          bool b = false;
           print("hello");
           Socket client = await Socket.connect('192.168.43.165', 10);
           print("connected");
           client.write("S"+"*"+userName.text+"*"+passWord.text+"*"+mail.text+"#");
           client.flush();
           print("send");
-          String string;
-          client.listen((socket) {
+          //String string = "";
+          String string = "";
+          client.listen((socket) async {
+            string = await "";
             string = String.fromCharCodes(socket).trim().substring(2);
-            print(string);
           });
-          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => BottomSwitcher()));
+          print(string);
+          if(string.length == 0) {
+            b = true;
+          }
+          print(b);
+          if(b==true) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BottomSwitcher()));
+            sleep(Duration(milliseconds: 1000));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("You are loged in now"),
+            ));
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Username or Password is uncorrect"),
+            ));
+          }
         },
         child: Text(
           'SignUp',
