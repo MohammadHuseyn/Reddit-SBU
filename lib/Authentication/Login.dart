@@ -136,26 +136,36 @@ Future<String> _sendMassage() {
           ),
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0),
-            
+
           ),
         ),
         onPressed: () async{
-          Socket client = await Socket.connect('172.20.177.166', 10);
+          bool b = false;
+          Socket client = await Socket.connect('192.168.43.165', 10);
           print("connected");
           client.write("L"+"*"+userName.text+"*"+passWord.text+"#");
           client.flush();
           print("send");
-          String string;
-          client.listen((socket) {
-            string = String.fromCharCodes(socket).trim().substring(2);
-            print(string);
+          String string = "";
+          client.listen((socket) async {
+            string = await String.fromCharCodes(socket).trim().substring(2);
           });
+          if(string.length == 0) {
+            b = true;
+          }
+          print(b);
+          if(b==true) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => BottomSwitcher()));
             sleep(Duration(milliseconds: 1000));
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text("You are loged in now"),
             ));
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Not available right now"),
+            ));
+          }
         },
           child: Text(
           'Login',

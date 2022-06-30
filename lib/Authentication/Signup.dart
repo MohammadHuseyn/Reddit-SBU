@@ -163,7 +163,7 @@ class _SignuppageState extends State<Signuppage> {
         ),
         onPressed: () async{
           print("hello");
-          Socket client = await Socket.connect('172.20.177.166', 10);
+          Socket client = await Socket.connect('192.168.43.165', 10);
           print("connected");
           client.write("S"+"*"+userName.text+"*"+passWord.text+"*"+mail.text+"#");
           client.flush();
