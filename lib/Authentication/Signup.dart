@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:test_mu/Authentication/Login.dart';
@@ -15,8 +17,12 @@ class _SignuppageState extends State<Signuppage> {
   @override
   bool rememberMe = false;
   bool unvisibility = true;
+  final userName = TextEditingController();
+  final passWord = TextEditingController();
+  final mail = TextEditingController();
 
   bool login = false;
+
   void changestateunvisibility() {
     setState(() {
       unvisibility = !unvisibility;
@@ -31,6 +37,7 @@ class _SignuppageState extends State<Signuppage> {
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
+            controller: passWord,
             obscureText: unvisibility,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -60,6 +67,7 @@ class _SignuppageState extends State<Signuppage> {
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
+            controller: mail,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -73,6 +81,7 @@ class _SignuppageState extends State<Signuppage> {
       ],
     );
   }
+
   Widget _UserBox() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,6 +90,7 @@ class _SignuppageState extends State<Signuppage> {
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
+            controller: userName,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -151,7 +161,38 @@ class _SignuppageState extends State<Signuppage> {
             borderRadius: new BorderRadius.circular(30.0),
           ),
         ),
-         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BottomSwitcher())),
+        onPressed: () async{
+          bool b = false;
+          print("hello");
+          Socket client = await Socket.connect('192.168.43.165', 10);
+          print("connected");
+          client.write("S"+"*"+userName.text+"*"+passWord.text+"*"+mail.text+"#");
+          client.flush();
+          print("send");
+          //String string = "";
+          String string = "";
+          client.listen((socket) async {
+            string = await "";
+            string = String.fromCharCodes(socket).trim().substring(2);
+          });
+          print(string);
+          if(string.length == 0) {
+            b = true;
+          }
+          print(b);
+          if(b==true) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BottomSwitcher()));
+            sleep(Duration(milliseconds: 1000));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("You are loged in now"),
+            ));
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Username or Password is uncorrect"),
+            ));
+          }
+        },
         child: Text(
           'SignUp',
           style: TextStyle(
@@ -235,32 +276,32 @@ class _SignuppageState extends State<Signuppage> {
             ),
           ),
         ),
-        SizedBox(
-          width: 20,
-        ),
-        GestureDetector(
-          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text("Not available right now"),
-          )),
-          child: Container(
-            height: 60.0,
-            width: 60.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black,
-                  offset: Offset(0, 2),
-                  blurRadius: 6.0,
-                ),
-              ],
-              image: DecorationImage(
-                image: AssetImage('assets/facebook.png'),
-              ),
-            ),
-          ),
-        ),
+        // SizedBox(
+        //   width: 20,
+        // ),
+        // GestureDetector(
+        //   onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text("Not available right now"),
+        //   )),
+        //   child: Container(
+        //     height: 60.0,
+        //     width: 60.0,
+        //     decoration: BoxDecoration(
+        //       shape: BoxShape.circle,
+        //       color: Colors.white,
+        //       boxShadow: [
+        //         BoxShadow(
+        //           color: Colors.black,
+        //           offset: Offset(0, 2),
+        //           blurRadius: 6.0,
+        //         ),
+        //       ],
+        //       image: DecorationImage(
+        //         image: AssetImage('assets/facebook.png'),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }
@@ -277,7 +318,8 @@ class _SignuppageState extends State<Signuppage> {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Loginpage()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Loginpage()));
           },
           child: Text(
             'Sign in',
@@ -293,7 +335,7 @@ class _SignuppageState extends State<Signuppage> {
 
   @override
   Widget build(BuildContext context) {
-    if(login){
+    if (login) {
       return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -301,67 +343,69 @@ class _SignuppageState extends State<Signuppage> {
         ),
         home: BottomSwitcher(),
       );
-    }else return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.green,
-                  Colors.white,
-                  Colors.white,
-                ],
+    } else
+      return Scaffold(
+        body: Stack(
+          children: <Widget>[
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.green,
+                    Colors.white,
+                    Colors.white,
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            height: double.infinity,
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 120.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Create an account',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "Ooohbaby",
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
+            Container(
+              height: double.infinity,
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                padding:
+                    EdgeInsets.symmetric(horizontal: 40.0, vertical: 120.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Create an account',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Ooohbaby",
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 30.0),
-                  _Mailbox(),
-                  _UserBox(),
-                  _Passwordbox(),
-                  Container(
-                      child: Row(
-                    children: [
-                      _rememberMeBox(),
-                    ],
-                  )),
-                  _SignUpBox(),
-                  Haveaccount(),
-                  SizedBox(
-                    height: 15.0,
-                  ),
-                  _Signinwith(),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  _more(),
-                ],
+                    SizedBox(height: 30.0),
+                    _Mailbox(),
+                    _UserBox(),
+                    _Passwordbox(),
+                    Container(
+                        child: Row(
+                      children: [
+                        _rememberMeBox(),
+                      ],
+                    )),
+                    _SignUpBox(),
+                    Haveaccount(),
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                    _Signinwith(),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    _more(),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
   }
 }

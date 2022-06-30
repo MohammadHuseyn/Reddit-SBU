@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/gestures.dart';
@@ -14,6 +15,8 @@ class Loginpage extends StatefulWidget {
 class _LoginpageState extends State<Loginpage> {
   bool rememberMe = false;
   bool unvisibility = true;
+  final userName = TextEditingController();
+  final passWord = TextEditingController();
   bool login = false;
   void changestateunvisibility() {
     setState(() {
@@ -29,6 +32,7 @@ class _LoginpageState extends State<Loginpage> {
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
+            controller: passWord,
             obscureText: unvisibility,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -49,7 +53,6 @@ class _LoginpageState extends State<Loginpage> {
       ],
     );
   }
-
   Widget _Userbox() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +61,7 @@ class _LoginpageState extends State<Loginpage> {
           alignment: Alignment.centerLeft,
           height: 60.0,
           child: TextField(
+            controller: userName,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -112,7 +116,13 @@ class _LoginpageState extends State<Loginpage> {
       ),
     );
   }
-
+Future<String> _sendMassage() {
+    // socket = await Socket.connect('localhost', 16);
+    // print("connected");
+    // socket.write("l-"+userName.text+"-"+passWord.text+"-"+mail.text);
+    // socket.flush();
+    // return "true";
+}
   Widget _LoginBox() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -126,15 +136,39 @@ class _LoginpageState extends State<Loginpage> {
           ),
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0),
+
           ),
         ),
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => BottomSwitcher()));
-          sleep(Duration(milliseconds: 1000));
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text("You are loged in now"),
-          ));
+        onPressed: () async{
+          bool b = false;
+          Socket client = await Socket.connect('192.168.43.165', 10);
+          print("connected");
+          client.write("L"+"*"+userName.text+"*"+passWord.text+"#");
+          client.flush();
+          print("send");
+          //String string = "";
+          String string = "";
+          client.listen((socket) async {
+            string = await "";
+            string = String.fromCharCodes(socket).trim().substring(2);
+          });
+          print(string);
+          if(string.length == 0) {
+            b = true;
+          }
+          print(b);
+          if(b==true) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BottomSwitcher()));
+            sleep(Duration(milliseconds: 1000));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("You are loged in now"),
+            ));
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Username or Password is uncorrect"),
+            ));
+          }
         },
           child: Text(
           'Login',
