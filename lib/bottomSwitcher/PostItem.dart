@@ -8,6 +8,7 @@ import 'package:test_mu/PageNavigator.dart';
 import 'package:test_mu/main.dart';
 import 'CommentItem.dart';
 import 'PostDetails.dart';
+import 'SerachResult.dart';
 // import 'comment.dart';
 
 class PostItem extends StatefulWidget {
@@ -63,9 +64,12 @@ class _PostItemState extends State<PostItem> {
             Container(
               color: Colors.transparent,
               child: ListTile(
-                title: Text(
-                  widget.post.owner.username,
-                  style: TextStyle(color: Colors.white),
+                title: GestureDetector(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SearchResult(mainUser: mainUser,communities: communities,query: widget.post.community.name,community: widget.post.community,))),
+                  child: Text(
+                    widget.post.community.name + " from " + widget.post.owner.username,
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 // leading: CircleAvatar(
                 //   backgroundImage: AssetImage('assets/google.png'),
@@ -303,7 +307,7 @@ class _PostItemState extends State<PostItem> {
                     child: RichText(
                       text: TextSpan(children: <TextSpan>[
                         TextSpan(
-                            text: ago + widget.post.owner.firstName + ": ",
+                            text: ago,
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 15,

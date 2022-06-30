@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:test_mu/Authentication/Login.dart';
 import 'package:test_mu/Authentication/Signup.dart';
+import 'package:test_mu/PageNavigator.dart';
+import 'package:test_mu/setting%20pages/ChangePass.dart';
+import 'package:test_mu/setting%20pages/SavedPosts.dart';
 
 import '../Classes/User.dart';
+import '../setting pages/ChangeUserInfo.dart';
 
 class Settings extends StatefulWidget {
   Settings({this.mainUser});
@@ -17,6 +21,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.grey.shade200,
         title: Text(
@@ -35,14 +40,14 @@ class _SettingsState extends State<Settings> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                   margin: const EdgeInsets.all(8.0),
-                  color: Colors.white54,
+                  color: Colors.indigo,
                   child: ListTile(
                     onTap: () {},
                     title: Center(
                       child: Text(
                         widget.mainUser.username,
                         style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w400,fontSize: 20),
+                            color: Colors.white, fontWeight: FontWeight.w400,fontSize: 20),
                       ),
                     ),
                     // leading: CircleAvatar(
@@ -67,7 +72,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         title: Text("Change Password"),
                         trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {},
+                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePass()));},
                       ),
                       Container(
                         width: double.infinity,
@@ -76,12 +81,12 @@ class _SettingsState extends State<Settings> {
                       ),
                       ListTile(
                         leading: Icon(
-                          Icons.language,
+                          Icons.short_text_outlined,
                           color: Colors.white,
                         ),
-                        title: Text("Change Language"),
+                        title: Text("Change user info"),
                         trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {},
+                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeUserInfo()));},
                       ),
                       Container(
                         width: double.infinity,
@@ -123,7 +128,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         title: Text("Saved Posts"),
                         trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {},
+                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => SavedPosts(savedPosts: mainUser.savedPosts,)));},
                       ),
                     ],
                   ),

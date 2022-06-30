@@ -22,6 +22,7 @@ class _SearchState extends State<Search> {
       data: ThemeData(backgroundColor: Colors.black54),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.black,
           title: Text("Explore in communities"),
           actions: [
@@ -87,7 +88,7 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return MaterialApp(home: SearchResult(query: query,communities: communities,mainUser: mainUser),);
+    return MaterialApp(home: SearchResult(query: query,communities: communities,mainUser: mainUser,community: null),);
   }
 
   @override

@@ -24,7 +24,7 @@ class _PostDetailsState extends State<PostDetails> {
     textFieldcontroller.text = "";
     return Scaffold(
       appBar: AppBar(title: Text(widget.post.owner.username + " 's post"),backgroundColor: Colors.black,),
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.indigo,
       body: SingleChildScrollView(
           child: Container(
         child: Column(
