@@ -93,15 +93,6 @@ class _SettingsState extends State<Settings> {
                         height: 2.0,
                         color: Colors.grey.shade300,
                       ),
-                      ListTile(
-                        leading: Icon(
-                          Icons.location_on_rounded,
-                          color: Colors.white,
-                        ),
-                        title: Text("Change Location"),
-                        trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {},
-                      ),
                       Container(
                         width: double.infinity,
                         height: 2.0,
