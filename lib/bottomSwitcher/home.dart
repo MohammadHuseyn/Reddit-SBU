@@ -25,7 +25,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Feed',style: TextStyle(color: Colors.black),),
+      ),
       body: Container(
         color: Colors.black,
           height: MediaQuery.of(context).size.height,
