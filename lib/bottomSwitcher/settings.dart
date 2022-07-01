@@ -98,15 +98,6 @@ class _SettingsState extends State<Settings> {
                         height: 2.0,
                         color: Colors.grey.shade300,
                       ),
-                      ListTile(
-                        leading: Icon(
-                          Icons.build,
-                          color: Colors.white,
-                        ),
-                        title: Text("Build Cmmunity"),
-                        trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {},
-                      ),
                       Container(
                         width: double.infinity,
                         height: 2.0,
